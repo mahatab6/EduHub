@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import bg1 from '../assets/b-bg-1.jpg';
-import image1 from '../assets/banner1.jpg';
+import bg1 from '../../assets/b-bg-1.jpg';
+import image1 from '../../assets/banner1.jpg';
 
 const Banner = () => {
   var settings = {
