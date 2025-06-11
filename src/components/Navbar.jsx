@@ -11,6 +11,10 @@ const Navbar = () => {
             <li>
                 <NavLink to="/courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>courses</NavLink>
             </li>
+            <li>
+                <NavLink to="/add-course" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
+</NavLink>
+            </li>
         </>
     )
     return (
