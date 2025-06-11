@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
-      <div className="w-full max-w-md p-8 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl">
+      <div className="w-full max-w-md p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="EduHub Logo" className="w-24 h-24" />
         </div>
