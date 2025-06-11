@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
         </div>
        <div className="bg-gray-900">
-            <div className="divider divider-info text-white text-sm opacity-70 py-2">Copyright</div>
+            <div className="divider divider-info text-white text-sm opacity-70 py-2"></div>
             <aside className="text-center text-white py-4 text-sm">
                 <p>
                 © {new Date().getFullYear()} <span className="font-semibold">EduHub</span>. All rights reserved. Built with passion for education.

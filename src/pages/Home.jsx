@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './homelayout/Banner';
 import Count from './homelayout/Count';
+import Choose from './homelayout/Choose';
 
 
 
@@ -9,6 +10,7 @@ const Home = () => {
         <div>
             <Banner/>
             <Count/>
+            <Choose/>
         </div>
     );
 };
