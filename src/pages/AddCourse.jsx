@@ -1,15 +1,58 @@
 import React, { useContext } from 'react';
 import { IoAddOutline } from "react-icons/io5";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import { format } from 'date-fns';
+import axios from 'axios';
+import { Bounce, toast } from 'react-toastify';
 
 
 
 
 const AddCourse = () => {
     const {user} = useContext(AuthContext);
-      const today = format(new Date(), 'dd-MM-yyyy');
+    const today = format(new Date(), 'dd-MM-yyyy');
+    const navigated = useNavigate()
+
+    
+
+    const handleAddCourse = (e) => {
+        e.preventDefault();
+        const from = e.target;
+        const title = from.title.value;
+        const description = from.description.value;
+        const photo = from.photo.value;
+        const duration = from.duration.value;
+
+        const courseData = {
+            title,
+            description,
+            photo,
+            duration,
+            instructor: user?.displayName,
+            email: user?.email,
+            created: today
+            };
+
+        axios.post('http://localhost:3000/add-new-course', courseData)
+        .then(() => {
+            toast.success('course added successfully', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
+            navigated("/manage-courses")
+        })
+        
+
+        
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
@@ -19,7 +62,7 @@ const AddCourse = () => {
                 <h1 className='text-4xl font-bold'>Add New Course</h1>
                 <p className='text-base font-normal'>Share your knowledge with the community</p>
                 </div>
-                <form className=' space-y-3'>
+                <form onSubmit={handleAddCourse} className=' space-y-3'>
                     <div>
                         <label htmlFor="text" className="block mb-1 text-sm font-medium">
                             Course Title
@@ -27,7 +70,8 @@ const AddCourse = () => {
                         <input
                             type="text"
                             id="text"
-                            name="text"
+                            name="title"
+                            required
                             placeholder="Enter course title"
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
@@ -37,7 +81,10 @@ const AddCourse = () => {
                             <label htmlFor="text" className="block mb-1 text-sm font-medium">
                                 Short Description
                             </label>
-                            <textarea className="w-full px-3 py-8 text-base border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" placeholder="Describe what students will learn in this course"></textarea>
+                            <textarea 
+                            name="description"
+                            required
+                            className="w-full px-3 py-8 text-base border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" placeholder="Describe what students will learn in this course"></textarea>
                         </fieldset>
                     </div>
                     <div>
@@ -45,9 +92,10 @@ const AddCourse = () => {
                             Photo URL
                         </label>
                         <input
-                            type="text"
+                            type="url"
                             id="photo"
                             name="photo"
+                            required
                             placeholder="Enter your photo url"
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
@@ -60,6 +108,7 @@ const AddCourse = () => {
                             type="text"
                             id="duration"
                             name="duration"
+                            required
                             placeholder="e.g., 4 weeks, 20 hours, 3 months"
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
@@ -73,7 +122,7 @@ const AddCourse = () => {
                         </div>
                     </div>
 
-                    <Link className='btn w-full bg-purple-600 rounded-xl'>Add Course</Link>
+                    <button className='btn w-full text-white bg-purple-600 rounded-xl'>Add Course</button>
                 </form>
             </div>
         </div>
