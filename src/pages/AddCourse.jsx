@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 const AddCourse = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
-            <div className='w-full max-w-lg p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl space-y-4'>
+            <div className='w-full max-w-xl p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl space-y-4'>
                 <div className='text-center justify-items-center space-y-2 pb-4'>
                 <IoAddOutline size={35} className=' text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-full' />
                 <h1 className='text-4xl font-bold'>Add New Course</h1>
@@ -57,17 +57,17 @@ const AddCourse = () => {
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
                     </div>
-                </form>
-                <div className='bg-blue-50 p-4 rounded-lg'>
-                    <h1 className='font-semibold text-blue-900 mb-2'>Course Information</h1>
-                   <div className='text-sm text-blue-800 space-y-1'>
-                    <p>Instructor:</p>
-                    <p>Email:</p>
-                    <p>Created:</p>
-                   </div>
-                </div>
+                    <div className='bg-blue-50 p-4 rounded-lg'>
+                        <h1 className='font-semibold text-blue-900 mb-2'>Course Information</h1>
+                        <div className='text-sm text-blue-800 space-y-1'>
+                            <p>Instructor:</p>
+                            <p>Email:</p>
+                            <p>Created:</p>
+                        </div>
+                    </div>
 
-                <Link className='btn w-full bg-purple-600 rounded-xl'>Add Course</Link>
+                    <Link className='btn w-full bg-purple-600 rounded-xl'>Add Course</Link>
+                </form>
             </div>
         </div>
     );
