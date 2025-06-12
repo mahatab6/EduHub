@@ -11,11 +11,13 @@ const ContextProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
 
     const signUp = (email,password) => {
-       return createUserWithEmailAndPassword(auth,email,password)
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth,email,password)
     }
 
     const signIn = (email, password) => {
-       return signInWithEmailAndPassword(auth, email, password)
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     const signInGoogle = () =>{
@@ -26,6 +28,7 @@ const ContextProvider = ({children}) => {
     }
 
     const profile = (userDetails) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, userDetails);
     }
 

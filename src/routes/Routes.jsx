@@ -5,6 +5,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Courses from "../pages/Courses";
 import AddCourse from "../pages/AddCourse";
+import ManageCourses from "../pages/ManageCourses";
+import EnrolledCourses from "../pages/EnrolledCourses";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
         {
           path: 'add-course',
           Component: AddCourse
+        },
+        {
+          path: 'manage-courses',
+          Component: ManageCourses
+        },
+        {
+          path: 'my-enrolled-courses',
+          Component: EnrolledCourses
         },
     ]
   },

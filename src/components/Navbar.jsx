@@ -37,6 +37,12 @@ const Navbar = () => {
                 <NavLink to="/add-course" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
                 </NavLink>
             </li>
+            <li>
+                <NavLink to="/manage-courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Manage Courses</NavLink>
+            </li>
+            <li>
+                <NavLink to="/my-enrolled-courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>My Enrollments</NavLink>
+            </li>
         </>
     )
     return (

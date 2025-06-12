@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IoAddOutline } from "react-icons/io5";
 import { Link } from 'react-router';
+import { AuthContext } from '../context/AuthContext';
+import { format } from 'date-fns';
+
+
 
 
 const AddCourse = () => {
+    const {user} = useContext(AuthContext);
+      const today = format(new Date(), 'dd-MM-yyyy');
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
             <div className='w-full max-w-xl p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl space-y-4'>
@@ -30,7 +37,7 @@ const AddCourse = () => {
                             <label htmlFor="text" className="block mb-1 text-sm font-medium">
                                 Short Description
                             </label>
-                            <textarea className="textarea h-24 w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" placeholder="Describe what students will learn in this course"></textarea>
+                            <textarea className="w-full px-3 py-8 text-base border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" placeholder="Describe what students will learn in this course"></textarea>
                         </fieldset>
                     </div>
                     <div>
@@ -60,9 +67,9 @@ const AddCourse = () => {
                     <div className='bg-blue-50 p-4 rounded-lg'>
                         <h1 className='font-semibold text-blue-900 mb-2'>Course Information</h1>
                         <div className='text-sm text-blue-800 space-y-1'>
-                            <p>Instructor:</p>
-                            <p>Email:</p>
-                            <p>Created:</p>
+                            <p>Instructor: {user?.displayName}</p>
+                            <p>Email: {user?.email}</p>
+                            <p>Created: {today}</p>
                         </div>
                     </div>
 
