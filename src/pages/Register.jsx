@@ -8,7 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const {signUp} = useContext(AuthContext)
+  const {signUp, profile} = useContext(AuthContext)
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -52,6 +52,7 @@ const Register = () => {
 
     signUp(email,password)
     .then(() => {
+      profile({displayName:name, photoURL: photoURL})
       toast.success('successfully Sign Up', {
         position: "top-center",
         autoClose: 5000,
@@ -101,6 +102,7 @@ const Register = () => {
                 Full Name
               </label>
               <input
+                required
                 type="text"
                 id="name"
                 name="name"
@@ -113,6 +115,7 @@ const Register = () => {
                 Photo URL
               </label>
               <input
+                required
                 type="text"
                 id="photo"
                 name="photourl"
@@ -125,6 +128,7 @@ const Register = () => {
                 Email address
               </label>
               <input
+                required
                 type="email"
                 id="email"
                 name="email"
@@ -139,6 +143,7 @@ const Register = () => {
                 </label>
               </div>
               <input
+                required
                 type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
@@ -160,6 +165,7 @@ const Register = () => {
               </label>
             </div>
             <input
+              required
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
               name="confirmPassword"
