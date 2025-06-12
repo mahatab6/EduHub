@@ -1,8 +1,87 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../assets/eduhub.png';
 import { Link } from 'react-router';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Bounce, toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const {signUp} = useContext(AuthContext)
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photoURL = e.target.photourl.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const conPassword = e.target.confirmPassword.value;
+
+    if(password != conPassword){
+      toast.error('Password or Confirm Password does not match', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+      return;
+    }
+
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegExp.test(password)) {
+          toast.error('Password must be at least 6 characters long and include both uppercase and lowercase letters.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+          return;
+          }
+
+    signUp(email,password)
+    .then(() => {
+      toast.success('successfully Sign Up', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        });
+    })
+    .catch(() => {
+      toast.error('sign up failed', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+    });
+
+    
+    console.log(name, photoURL, email, password, conPassword)
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
       <div className="w-full max-w-md p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl">
@@ -15,7 +94,7 @@ const Register = () => {
             Create your account to start learning
           </p>
         </div>
-        <form  className="space-y-6">
+        <form onSubmit={handleRegister} className="space-y-6">
           <div className="space-y-4">
             <div>
               <label htmlFor="name" className="block mb-1 text-sm font-medium">
@@ -36,7 +115,7 @@ const Register = () => {
               <input
                 type="text"
                 id="photo"
-                name="photo"
+                name="photourl"
                 placeholder="Enter your photo url"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
               />
@@ -53,34 +132,47 @@ const Register = () => {
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
               />
             </div>
-            <div>
+            <div className="relative mb-4">
               <div className="flex justify-between items-center mb-1">
                 <label htmlFor="password" className="text-sm font-medium">
                   Password
                 </label>
               </div>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder="Create a password"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
               />
-            </div>
-            <div>
-              <div className="flex justify-between items-center mb-1">
-                <label htmlFor="password" className="text-sm font-medium">
-                  Confirm Password
-                </label>
+              <div
+                className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
+                onClick={() => setShowPassword(prev => !prev)}
+              >
+                {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
               </div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Confirm your password"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
-              />
             </div>
+
+          <div className="relative">
+            <div className="flex justify-between items-center mb-1">
+              <label htmlFor="confirmPassword" className="text-sm font-medium">
+                Confirm Password
+              </label>
+            </div>
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+            />
+            <div
+              className="absolute right-3 top-9 transform -translate-y-1/2 cursor-pointer"
+              onClick={() => setShowConfirmPassword(prev => !prev)}
+            >
+              {showConfirmPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
+          </div>
           </div>
           <div className="space-y-4">
             <button

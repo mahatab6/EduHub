@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/eduhub.png';
 import { Link } from 'react-router';
+import { AuthContext } from '../context/AuthContext';
+import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
+
+  const {signIn} = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signIn(email,password)
+    .then(() => {
+       toast.success('Wow successfully login', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+    })
+    .catch(() => {
+    console.log()
+    });
+
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
       <div className="w-full max-w-md p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl">
@@ -15,7 +45,7 @@ const Login = () => {
             Sign in to your EduHub account
           </p>
         </div>
-        <form noValidate className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block mb-1 text-sm font-medium">

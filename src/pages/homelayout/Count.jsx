@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import CountUp from 'react-countup';
 import { LuUsers } from "react-icons/lu";
 import { FaBookOpen } from "react-icons/fa6";
