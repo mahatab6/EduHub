@@ -1,8 +1,30 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router';
 import logo from '../assets/eduhub.png'
+import { AuthContext } from '../context/AuthContext';
+import { Bounce, toast } from 'react-toastify';
 
 const Navbar = () => {
+
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogout = () =>{
+        logOut()
+        .then(() => {
+            toast.success('Successfully LogOut', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+                });
+            })
+    }
+
     const link =(
         <>
             <li>
@@ -13,7 +35,7 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink to="/add-course" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
-</NavLink>
+                </NavLink>
             </li>
         </>
     )
@@ -42,8 +64,32 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-1">
-                    <NavLink to="/login" className="btn">Login</NavLink>
-                    <NavLink to="/register" className="btn">Sign Up</NavLink>
+                    {
+                        user? (
+                        <>
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} className="avatar ">
+                                <div className="ring-primary ring-offset-base-100 w-10 rounded-full ">
+                                    <img src={user.photoURL} />
+                                </div>
+                            </div>  
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                <h1 className='text-xl font-medium'>{user?.displayName}</h1>
+                                <p className='text-base p-1'>{user.email}</p>
+                                <Link onClick={handleLogout} className='btn'>Log out</Link>
+                            </ul>
+                        </div>
+                        </>) : 
+
+                        (
+                            <>
+                            <NavLink to="/login" className="btn">Login</NavLink>
+                            <NavLink to="/register" className="btn">Sign Up</NavLink>
+                            </>
+                        )
+                        
+                    }
+                    
                 </div>
             </div>
         </div>
