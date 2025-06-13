@@ -1,20 +1,24 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
 import { IoMdTime } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
-
-
-
+import { AuthContext } from '../context/AuthContext';
+import { format } from 'date-fns';
+import Swal from 'sweetalert2';
 
 
 
 const CourseDetails = () => {
     const {id} = useParams();
     const [details, setDetails] = useState([]);
+    const {user} = useContext(AuthContext);
+    const today = format(new Date(), 'dd-MM-yyyy');
+    const [enrollCount, setEnrollCount] = useState(0);
+
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/course-details/${id}`)
@@ -22,7 +26,44 @@ const CourseDetails = () => {
             setDetails(data.data)
         )
     },[id])
-    console.log(details)
+    
+    const handleEnroll = (details) =>{
+
+        const {_id, title, description, duration, instructor, email} = details;
+
+        const enrolledData = {
+             courseTitle : title,
+             courseDescription : description,
+             term : duration,
+             lecturer : instructor,
+             enroll : today,
+             courseId : _id,
+             courseEmail : email,
+        }
+        
+        axios.post('http://localhost:3000/user-enroll-data', enrolledData)
+        .then(data =>{
+            if(data.data.insertedId){
+                Swal.fire({
+                    title: "Enrollment successful",
+                    icon: "success",
+                    draggable: true
+                    });
+                setEnrollCount(prev => prev + 1)
+
+            }
+        })
+    }
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/enroll-count/${details._id}`)
+            .then(data => {
+            setEnrollCount(data.data.count);
+        });
+    }, [details._id]);
+
+console.log(enrollCount)
+
     return (
         <div>
             
@@ -32,9 +73,24 @@ const CourseDetails = () => {
                     <p className='text-xl text-white mb-4'>Discover amazing courses and start your learning journey</p>
                     <div className='flex flex-wrap gap-2'>
                         <h1 className='flex items-center text-white gap-1'><span><IoMdTime size={25} /></span>{details.duration}</h1>
-                        <h1 className='flex items-center text-white gap-1'><span><FaUsers size={25} /></span>0 enrolled</h1>
+                        <h1 className='flex items-center text-white gap-1'><span><FaUsers size={25} /></span>{enrollCount}enrolled</h1>
                         <h1 className='flex items-center text-white gap-1'><span><CiCalendarDate size={25} /></span>{details.created}</h1>
                         <h1 className='flex items-center text-white gap-1'><span><FaRegUser size={25} /></span>By {details.instructor}</h1>
+                    </div>
+                    <div className='mt-4'>
+                        {
+                            user?(
+                                <>
+                                <button onClick={()=> handleEnroll (details)} className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'>Enroll Now</button>
+                                </>
+                            ) : (
+                                <>
+                                <button className='rounded-md text-sm font-medium disabled:opacity-50 h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed'>Login Required to Enroll</button>
+                                <p className='text-bas pt-2'>Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.</p>
+                                </>
+                            )
+                        }
+
                     </div>
                 </div>
                 <img className='max-w-3xl rounded-2xl' src={details.photo} alt="" />
@@ -62,7 +118,7 @@ const CourseDetails = () => {
                     <div className='flex justify-around'>
                         <div>
                             <p className='text-xl font-medium'>Students Enrolled</p>
-                            <p>{details.duration}</p>
+                            <p>{enrollCount}</p>
                         </div>
                         <div>
                             <p className='text-xl font-medium'>Created</p>

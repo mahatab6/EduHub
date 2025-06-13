@@ -17,8 +17,6 @@ const Courses = () => {
         )
     },[])
 
-    console.log(courseData);
-
 
     return (
         <div>
