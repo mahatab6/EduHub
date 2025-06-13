@@ -7,6 +7,7 @@ import Courses from "../pages/Courses";
 import AddCourse from "../pages/AddCourse";
 import ManageCourses from "../pages/ManageCourses";
 import EnrolledCourses from "../pages/EnrolledCourses";
+import CourseDetails from "../pages/CourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
         {
           path: 'my-enrolled-courses',
           Component: EnrolledCourses
+        },
+        {
+          path: 'course-details/:id',
+          Component: CourseDetails
         },
     ]
   },

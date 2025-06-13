@@ -7,6 +7,8 @@ import online from '../assets/online-course.png'
 import { IoMdTime } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
+import { TiDelete } from "react-icons/ti";
+
 
 const EnrolledCourses = () => {
 
@@ -43,7 +45,7 @@ const EnrolledCourses = () => {
                     </Link>
                     </div>
                 ) : (
-                    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4'>
+                    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6'>
                         <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 px-8">
                             <table className="table">
                                 <thead>
@@ -85,7 +87,7 @@ const EnrolledCourses = () => {
                                         </td>
                                         <td>
                                         <div className="flex justify-center items-center h-full">
-                                            <button className="btn rounded-xl bg-red-600 text-white">Remove Enrollment</button>
+                                            <button className="btn rounded-xl bg-red-600 text-white"> <TiDelete size={25}/>Remove Enrollment</button>
                                         </div>
                                         </td>
                                     </tr>

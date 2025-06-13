@@ -63,7 +63,8 @@ const Courses = () => {
                                 <p>created: {course.created}</p>
                             </div>
                         </div>
-                        <Link className='btn bg-purple-600 text-white rounded-2xl'>View Details</Link>
+                        
+                        <Link to={`/course-details/${course._id}`} className='btn bg-purple-600 text-white rounded-2xl'>View Details</Link>
                     </div>
                 ))
             }

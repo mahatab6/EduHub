@@ -66,9 +66,11 @@ const ManageCourses = () => {
                                         <td>{course.title}</td>
                                         <td>{course.description}</td>
                                         <td>{course.created}</td>
-                                        <td className='flex gap-1'>
-                                        <button className="btn rounded-xl btn-primary"><FaRegEdit />Edit</button>
-                                        <button className="btn rounded-xl bg-red-600 text-white"><MdDeleteForever />Delete</button>
+                                        <td>
+                                            <div className="flex justify-center items-center h-full gap-1">
+                                                <button className="btn rounded-xl btn-primary"><FaRegEdit />Edit</button>
+                                                <button className="btn rounded-xl bg-red-600 text-white"><MdDeleteForever />Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                     ))}
