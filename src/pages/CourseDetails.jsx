@@ -19,13 +19,14 @@ const CourseDetails = () => {
     const today = format(new Date(), 'dd-MM-yyyy');
     const [enrollCount, setEnrollCount] = useState(0);
 
-
     useEffect(()=>{
         axios.get(`http://localhost:3000/course-details/${id}`)
         .then(data =>
             setDetails(data.data)
         )
     },[id])
+
+
     
     const handleEnroll = (details) =>{
 
@@ -62,8 +63,11 @@ const CourseDetails = () => {
         });
     }, [details._id]);
 
-console.log(enrollCount)
+    
+  
 
+
+    
     return (
         <div>
             
@@ -80,9 +84,10 @@ console.log(enrollCount)
                     <div className='mt-4'>
                         {
                             user?(
-                                <>
-                                <button onClick={()=> handleEnroll (details)} className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'>Enroll Now</button>
-                                </>
+                                <button onClick={()=>handleEnroll(details)} className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'>
+                                    Enroll Now
+                                </button>
+                                    
                             ) : (
                                 <>
                                 <button className='rounded-md text-sm font-medium disabled:opacity-50 h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed'>Login Required to Enroll</button>

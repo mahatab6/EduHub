@@ -65,24 +65,24 @@ const EnrolledCourses = () => {
                                 <tbody>
                                     {singleCourse.map((course, index) => (
                                     <tr key={index} className="hover:bg-base-300">
-                                        <td>{course.title}</td>
-                                        <td>{course.description}</td>
+                                        <td>{course.courseTitle}</td>
+                                        <td>{course.courseDescription}</td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><IoMdTime size={20} /></span>
-                                             {course.duration}
+                                             {course.term}
                                             </div>
                                         </td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><FaRegUser size={20}/></span>
-                                             {course.instructor}
+                                             {course.lecturer}
                                             </div>
                                         </td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><CiCalendarDate size={20}/></span>
-                                             {course.created}
+                                             {course.enroll}
                                             </div>
                                         </td>
                                         <td>
