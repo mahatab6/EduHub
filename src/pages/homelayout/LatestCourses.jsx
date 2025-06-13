@@ -28,12 +28,8 @@ const LatestCourses = () => {
                             <h2 className="card-title text-2xl font-semibold">{course.title}</h2>
                             <p className='text-sm text-muted-foreground mb-4'>{course.description}</p>
                             <div className='flex justify-around pt-3'>
-                                <p className='flex items-center gap-1'>{course.duration}</p>
-                                <p className='flex items-center gap-1'>0 enrolled</p>
-                            </div>
-                            <div className='flex justify-around'>
-                                <p>By {course.instructor}</p>
-                                <p>created: {course.created}</p>
+                                <p className='flex items-center gap-1'>Duration: {course.duration}</p>
+                                <p className='flex items-center gap-1'>Created: {course.created}</p>
                             </div>
                         </div>
                         

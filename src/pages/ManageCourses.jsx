@@ -6,6 +6,7 @@ import { AuthContext } from '../context/AuthContext';
 import graduation from '../assets/graduation.png'
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { Bounce, toast } from 'react-toastify';
 
 
 
@@ -22,6 +23,27 @@ const ManageCourses = () => {
         )
     },[user])
 
+    const handleDelete = (id) =>{
+        axios.delete(`http://localhost:3000/courses/${id}`)
+        .then(data =>{
+            if(data.data.deletedCount == 1){
+                toast('Delete done', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+                const updateData = singleCourse.filter(course => course._id !== id);
+                setSingleCourse(updateData)
+            }
+        }
+        )
+    }
     console.log(singleCourse)
 
     return (
@@ -33,7 +55,8 @@ const ManageCourses = () => {
                 </div>
                 <Link to="/add-course" className='btn bg-purple-600 text-white rounded-xl'><IoAddOutline size={25}/> Add New Course</Link>
             </div>
-
+            
+            
             {
                 singleCourse.length === 0 ? (
                     <div className='text-center py-16'>
@@ -70,7 +93,7 @@ const ManageCourses = () => {
                                             <div className="flex justify-center items-center h-full gap-1">
 
                                                 <Link to={`/edit-course/${course._id}`} className="btn rounded-xl btn-primary"><FaRegEdit />Edit</Link>
-                                                <button className="btn rounded-xl bg-red-600 text-white"><MdDeleteForever />Delete</button>
+                                                <button onClick={() => handleDelete(course._id)} className="btn rounded-xl bg-red-600 text-white"><MdDeleteForever />Delete</button>
                                             </div>
                                         </td>
                                     </tr>
