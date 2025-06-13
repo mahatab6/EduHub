@@ -64,7 +64,7 @@ const Courses = () => {
                             </div>
                         </div>
                         <Link className='btn bg-purple-600 text-white rounded-2xl'>View Details</Link>
-                    </div>git
+                    </div>
                 ))
             }
             </div>
