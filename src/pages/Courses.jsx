@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoTimeOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
 import { Link } from 'react-router';
+import axios from 'axios';
 
 
 
@@ -10,10 +11,9 @@ const Courses = () => {
     const [courseData, setCourseData] = useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:3000/all-courses')
-        .then(res => res.json())
+        axios.get('http://localhost:3000/all-courses')
         .then(data =>
-            setCourseData(data)
+            setCourseData(data.data)
         )
     },[])
 

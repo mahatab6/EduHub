@@ -4,6 +4,8 @@ import { IoAddOutline } from "react-icons/io5";
 
 
 const ManageCourses = () => {
+
+    
     return (
         <div>
             <div className='flex items-center justify-around py-12'>
@@ -13,6 +15,7 @@ const ManageCourses = () => {
                 </div>
                 <Link to="/add-course" className='btn bg-purple-600 text-white rounded-xl'><IoAddOutline size={25}/> Add New Course</Link>
             </div>
+            
         </div>
     );
 };
