@@ -3,6 +3,7 @@ import Banner from './homelayout/Banner';
 import Count from './homelayout/Count';
 import Choose from './homelayout/Choose';
 import Learning from './homelayout/Learning';
+import LatestCourses from './homelayout/LatestCourses';
 
 
 
@@ -11,8 +12,10 @@ const Home = () => {
         <div>
             <Banner/>
             <Count/>
+            <LatestCourses/>
             <Choose/>
             <Learning/>
+            
         </div>
     );
 };
