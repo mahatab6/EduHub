@@ -18,6 +18,17 @@ const CourseDetails = () => {
     const {user} = useContext(AuthContext);
     const today = format(new Date(), 'dd-MM-yyyy');
     const [enrollCount, setEnrollCount] = useState(0);
+    const [isEnrolled, setIsEnrolled] = useState(false); 
+
+
+    useEffect(() => {
+        if (details._id) {
+            axios.get(`http://localhost:3000/enroll-check/${details._id}`)
+                .then(data => {
+                    setIsEnrolled(data.data.enrolled);
+                });
+        }
+    }, [details._id,]);
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/course-details/${id}`)
@@ -26,11 +37,10 @@ const CourseDetails = () => {
         )
     },[id])
 
-
     
     const handleEnroll = (details) =>{
 
-        const {_id, title, description, duration, instructor, email} = details;
+        const {_id, title, description, duration, instructor, email, photo} = details;
 
         const enrolledData = {
              courseTitle : title,
@@ -40,6 +50,7 @@ const CourseDetails = () => {
              enroll : today,
              courseId : _id,
              courseEmail : email,
+             coursePhoto : photo,
         }
         
         axios.post('http://localhost:3000/user-enroll-data', enrolledData)
@@ -50,7 +61,8 @@ const CourseDetails = () => {
                     icon: "success",
                     draggable: true
                     });
-                setEnrollCount(prev => prev + 1)
+                setIsEnrolled(true);
+                setEnrollCount(prev => prev + 1);
 
             }
         })
@@ -64,8 +76,7 @@ const CourseDetails = () => {
     }, [details._id]);
 
     
-  
-
+    
 
     
     return (
@@ -84,9 +95,15 @@ const CourseDetails = () => {
                     <div className='mt-4'>
                         {
                             user?(
-                                <button onClick={()=>handleEnroll(details)} className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'>
-                                    Enroll Now
+                                <button
+                                onClick={() => handleEnroll(details)}
+                                disabled={!user || isEnrolled}
+                                className={`rounded-md text-sm font-medium h-10 px-4 py-2 
+                                    ${!user || isEnrolled ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-white text-purple-600'}`}
+                                >
+                                {isEnrolled ? 'Already Enrolled' : 'Enroll Now'}
                                 </button>
+
                                     
                             ) : (
                                 <>
