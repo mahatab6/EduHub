@@ -19,8 +19,6 @@ const Home = () => {
             <PopularCourses/>
             <Choose/>
             <Learning/>
-            
-            
         </div>
     );
 };

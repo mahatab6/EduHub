@@ -32,10 +32,12 @@ const CourseDetails = () => {
             .then(data => {
                 setIsEnrolled(data.data.enrolled);
             })
-            .catch(err => console.error(err));
+            
         }
 
     }, [details._id, user?.email]);
+
+    console.log(user?.email,details._id, )
 
 
     useEffect(()=>{
@@ -48,7 +50,7 @@ const CourseDetails = () => {
     
     const handleEnroll = (details) =>{
 
-        const {_id, title, description, duration, instructor, email, photo} = details;
+        const {_id, title, description, duration, instructor, photo} = details;
 
         const enrolledData = {
              courseTitle : title,
@@ -57,7 +59,7 @@ const CourseDetails = () => {
              lecturer : instructor,
              enroll : today,
              courseId : _id,
-             courseEmail : email,
+             courseEmail : user?.email,
              coursePhoto : photo,
         }
         
