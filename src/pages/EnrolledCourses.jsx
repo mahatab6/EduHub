@@ -8,6 +8,7 @@ import { IoMdTime } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { TiDelete } from "react-icons/ti";
+import Swal from 'sweetalert2';
 
 
 const EnrolledCourses = () => {
@@ -16,13 +17,34 @@ const EnrolledCourses = () => {
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/manage-courses/${user?.email}`)
+        axios.get(`http://localhost:3000/enroll-manage-courses/${user?.email}`)
         .then(data =>
             setSingleCourse(data.data)
         )
     },[user])
 
-    console.log(singleCourse)
+    const handleEnroll = (id) => {
+        Swal.fire({
+            title: "Remove Enrollment",
+            text: "Are you sure you want to remove your enrollment? You can always enroll again later.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                title: "Deleted!",
+                text: "Enrollment removed",
+                icon: "success"
+                });
+                axios.delete(`http://localhost:3000/enroll-courses-delete/${id}`)
+                const newCourse = singleCourse.filter(course => course._id !== id);
+                setSingleCourse(newCourse);
+            }
+            });
+    }
 
     return (
         <div className='min-h-screen'>
@@ -87,7 +109,7 @@ const EnrolledCourses = () => {
                                         </td>
                                         <td>
                                         <div className="flex justify-center items-center h-full">
-                                            <button className="btn rounded-xl bg-red-600 text-white"> <TiDelete size={25}/>Remove Enrollment</button>
+                                            <button onClick={()=>handleEnroll(course._id)} className="btn rounded-xl bg-red-600 text-white"> <TiDelete size={25}/>Remove Enrollment</button>
                                         </div>
                                         </td>
                                     </tr>
