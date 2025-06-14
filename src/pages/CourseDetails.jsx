@@ -21,21 +21,29 @@ const CourseDetails = () => {
     const [isEnrolled, setIsEnrolled] = useState(false); 
 
 
-    useEffect(() => {
-        if (details._id) {
-            axios.get(`http://localhost:3000/enroll-check/${details._id}`)
-                .then(data => {
-                    setIsEnrolled(data.data.enrolled);
-                });
+   useEffect(() => {
+        if (details._id && user?.email) {
+            axios.get('http://localhost:3000/enroll-check', {
+                params: {
+                    courseId: details._id,
+                    email: user.email
+                }
+            })
+            .then(data => {
+                setIsEnrolled(data.data.enrolled);
+            })
+            .catch(err => console.error(err));
         }
-    }, [details._id,]);
+
+    }, [details._id, user?.email]);
+
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/course-details/${id}`)
         .then(data =>
             setDetails(data.data)
         )
-    },[id])
+    },[id]);
 
     
     const handleEnroll = (details) =>{

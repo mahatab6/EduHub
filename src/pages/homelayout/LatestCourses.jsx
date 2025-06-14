@@ -10,7 +10,7 @@ const LatestCourses = () => {
         .then(data =>
             setLatestData(data.data)
         )
-    })
+    },[])
     return (
         <div>
             <div className='text-center mb-12 mt-8'>
