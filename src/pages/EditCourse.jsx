@@ -27,15 +27,18 @@ const EditCourse = () => {
         const description = from.description.value;
         const photo = from.photo.value;
         const duration = from.duration.value;
+        const seats = from.seats.value;
 
         const updateInfo = {
             title,
             description,
             photo,
             duration,
+            seats,
             instructor: oldInfo.instructor,
             email: oldInfo.email,
-            created: oldInfo.created
+            created: oldInfo.created,
+            
         };
 
         axios.put(`http://localhost:3000/update-course-data/${id}`,updateInfo)
@@ -120,6 +123,20 @@ const EditCourse = () => {
                                     required
                                     placeholder="e.g., 4 weeks, 20 hours, 3 months"
                                     defaultValue={oldInfo.duration}
+                                    className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="seats" className="block mb-1 text-sm font-medium">
+                                    Seats 
+                                </label>
+                                <input
+                                    type="number"
+                                    id="seats"
+                                    name="seats "
+                                    required
+                                    defaultValue={oldInfo.seats}
+                                    placeholder="How many students you want to enroll in the course?"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                                 />
                             </div>

@@ -24,6 +24,7 @@ const AddCourse = () => {
         const description = from.description.value;
         const photo = from.photo.value;
         const duration = from.duration.value;
+        const seats = from.seats.value;
 
         const courseData = {
             title,
@@ -32,8 +33,10 @@ const AddCourse = () => {
             duration,
             instructor: user?.displayName,
             email: user?.email,
-            created: today
-            };
+            created: today,
+            seats: seats
+            
+        };
 
         axios.post('http://localhost:3000/add-new-course', courseData)
         .then(() => {
@@ -114,6 +117,19 @@ const AddCourse = () => {
                             name="duration"
                             required
                             placeholder="e.g., 4 weeks, 20 hours, 3 months"
+                            className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="seats" className="block mb-1 text-sm font-medium">
+                            Seats 
+                        </label>
+                        <input
+                            type="number"
+                            id="seats"
+                            name="seats "
+                            required
+                            placeholder="How many students you want to enroll in the course?"
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
                     </div>

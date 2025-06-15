@@ -22,7 +22,8 @@ const CourseDetails = () => {
     const [enrollCount, setEnrollCount] = useState(0);
     const [isEnrolled, setIsEnrolled] = useState(false); 
     const [loading, setLoading] = useState(true);
-    
+    const [controlBtn, setControlBtn] = useState(false);
+
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/course-details/${id}`)
@@ -57,14 +58,25 @@ const CourseDetails = () => {
         });
     }, [details._id]);
 
+    useEffect(() => {
+    if (enrollCount === parseInt(details.seats)) {
+        setControlBtn(true);
+    } 
+    }, [enrollCount, details.seats]);
+
 
     if(loading){
         return <Loading/>
     };
+
+    console.log(controlBtn)
+
+    
+   
     
     const handleEnroll = (details) =>{
 
-        const {_id, title, description, duration, instructor, photo} = details;
+        const {_id, title, description, duration, instructor, photo, seats} = details;
 
         const enrolledData = {
              courseTitle : title,
@@ -75,6 +87,7 @@ const CourseDetails = () => {
              courseId : _id,
              courseEmail : user?.email,
              coursePhoto : photo,
+             enrollStudent : seats,
         }
         
         axios.post('http://localhost:3000/user-enroll-data', enrolledData)
