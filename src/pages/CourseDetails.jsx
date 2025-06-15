@@ -97,6 +97,36 @@ const CourseDetails = () => {
         })
     }
 
+    const handleremove = (id) =>{
+        
+        Swal.fire({
+            title: "Remove Enrollment",
+            text: "Are you sure you want to remove your enrollment? You can always enroll again later.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) =>{
+            if (result.isConfirmed){
+                 axios.delete(`http://localhost:3000/enroll-button-delete/${id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Enrollment removed",
+                            icon: "success"
+                        });
+                        setIsEnrolled(false);
+                        setEnrollCount(prev => ( prev - 1));
+                    }
+                })
+            }
+        })
+        
+        console.log(id)
+    }
+
     
     return (
         <div>
@@ -115,35 +145,44 @@ const CourseDetails = () => {
                     </div>
                     <div className='mt-4'>
                       {
-                            user ? (
-                                parseInt(details.seats) === enrollCount ? (
-                                <button
-                                    disabled
-                                    className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600 cursor-not-allowed'
-                                >
-                                    No seats left
-                                </button>
-                                ) : (
-                                <button
-                                    onClick={() => handleEnroll(details)}
-                                    disabled={!user || isEnrolled}
-                                    className={`rounded-md text-sm font-medium h-10 px-4 py-2 
-                                    ${!user || isEnrolled ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-white text-purple-600'}`}
-                                >
-                                    {isEnrolled ? 'Already Enrolled' : 'Enroll Now'}
-                                </button>
-                                )
+
+                        user ? (
+                            parseInt(details.seats) === enrollCount ? (
+                            <button
+                                disabled
+                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600 cursor-not-allowed'
+                            >
+                                No seats left
+                            </button>
                             ) : (
-                                <>
-                                <button className='rounded-md text-sm font-medium disabled:opacity-50 h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed'>
-                                    Login Required to Enroll
+                            isEnrolled ? (
+                                <button
+                                onClick={() => handleremove(details._id)}
+                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600'
+                                >
+                                Already Enrolled
                                 </button>
-                                <p className='text-bas pt-2'>
-                                    Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.
-                                </p>
-                                </>
+                            ) : (
+                                <button
+                                onClick={() => handleEnroll(details)}
+                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'
+                                >
+                                Enroll Now
+                                </button>
                             )
-                        }
+                            )
+                        ) : (
+                            <>
+                            <button className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed' disabled>
+                                Login Required to Enroll
+                            </button>
+                            <p className='text-base pt-2'>
+                                Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.
+                            </p>
+                            </>
+                        )
+                    }
+
 
                     </div>
                 </div>
