@@ -9,6 +9,7 @@ import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { AuthContext } from '../context/AuthContext';
 import { format } from 'date-fns';
 import Swal from 'sweetalert2';
+import Loading from './Loading';
 
 
 
@@ -19,7 +20,18 @@ const CourseDetails = () => {
     const today = format(new Date(), 'dd-MM-yyyy');
     const [enrollCount, setEnrollCount] = useState(0);
     const [isEnrolled, setIsEnrolled] = useState(false); 
+    const [loading, setLoading] = useState(true);
+    
 
+    useEffect(()=>{
+        axios.get(`http://localhost:3000/course-details/${id}`)
+        .then(data =>
+        {
+            setDetails(data.data);
+            setLoading(false);
+        }
+        )
+    },[id]);
 
    useEffect(() => {
         if (details._id && user?.email) {
@@ -37,16 +49,17 @@ const CourseDetails = () => {
 
     }, [details._id, user?.email]);
 
-    console.log(user?.email,details._id, )
+    useEffect(() => {
+        axios.get(`http://localhost:3000/enroll-count/${details._id}`)
+            .then(data => {
+            setEnrollCount(data.data.count);
+        });
+    }, [details._id]);
 
 
-    useEffect(()=>{
-        axios.get(`http://localhost:3000/course-details/${id}`)
-        .then(data =>
-            setDetails(data.data)
-        )
-    },[id]);
-
+    if(loading){
+        return <Loading/>
+    };
     
     const handleEnroll = (details) =>{
 
@@ -77,16 +90,6 @@ const CourseDetails = () => {
             }
         })
     }
-
-    useEffect(() => {
-        axios.get(`http://localhost:3000/enroll-count/${details._id}`)
-            .then(data => {
-            setEnrollCount(data.data.count);
-        });
-    }, [details._id]);
-
-    
-    
 
     
     return (

@@ -3,20 +3,30 @@ import { IoTimeOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
 import { Link } from 'react-router';
 import axios from 'axios';
+import Loading from './Loading';
+import { AuthContext } from '../context/AuthContext';
 
 
 
 const Courses = () => {
-
+    const [ loading, setLoading ] = useState(true);
     const [courseData, setCourseData] = useState([]);
 
+    
     useEffect(()=>{
         axios.get('http://localhost:3000/all-courses')
-        .then(data =>
-            setCourseData(data.data)
-        )
+        .then(data => {
+            setCourseData(data.data);
+            setLoading(false);
+        })
+        
     },[])
 
+    if(loading){
+        return <Loading/>;
+        }
+
+   
 
     return (
         <div>

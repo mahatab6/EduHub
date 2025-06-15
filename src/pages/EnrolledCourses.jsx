@@ -9,19 +9,28 @@ import { FaRegUser } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { TiDelete } from "react-icons/ti";
 import Swal from 'sweetalert2';
+import Loading from './Loading';
 
 
 const EnrolledCourses = () => {
 
     const {user} = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/enroll-manage-courses/${user?.email}`)
         .then(data =>
-            setSingleCourse(data.data)
+        {
+            setSingleCourse(data.data);
+            setLoading(false);
+        }
         )
     },[user])
+
+    if(loading){
+        return<Loading/>
+    };
 
     const handleEnroll = (id) => {
         Swal.fire({

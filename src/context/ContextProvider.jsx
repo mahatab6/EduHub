@@ -59,6 +59,7 @@ const ContextProvider = ({children}) => {
         loading,
         logOut,
         profile,
+        setLoading,
     }
 
     console.log(user)

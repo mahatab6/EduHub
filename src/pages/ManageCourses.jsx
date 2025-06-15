@@ -7,6 +7,7 @@ import graduation from '../assets/graduation.png'
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Bounce, toast } from 'react-toastify';
+import Loading from './Loading';
 
 
 
@@ -14,14 +15,22 @@ import { Bounce, toast } from 'react-toastify';
 const ManageCourses = () => {
 
     const {user} = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
         axios.get(`http://localhost:3000/manage-courses/${user?.email}`)
         .then(data =>
-            setSingleCourse(data.data)
+        {
+            setSingleCourse(data.data);
+            setLoading(false);
+        }
         )
     },[user])
+
+    if(loading){
+        return <Loading/>
+    };
 
     const handleDelete = (id) =>{
         axios.delete(`http://localhost:3000/courses/${id}`)
