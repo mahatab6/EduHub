@@ -22,7 +22,7 @@ const CourseDetails = () => {
     const [enrollCount, setEnrollCount] = useState(0);
     const [isEnrolled, setIsEnrolled] = useState(false); 
     const [loading, setLoading] = useState(true);
-    const [controlBtn, setControlBtn] = useState(false);
+
 
 
     useEffect(()=>{
@@ -58,20 +58,12 @@ const CourseDetails = () => {
         });
     }, [details._id]);
 
-    useEffect(() => {
-    if (enrollCount === parseInt(details.seats)) {
-        setControlBtn(true);
-    } 
-    }, [enrollCount, details.seats]);
-
-
+   
     if(loading){
         return <Loading/>
     };
 
-    console.log(controlBtn)
 
-    
    
     
     const handleEnroll = (details) =>{
@@ -122,22 +114,33 @@ const CourseDetails = () => {
                         <h1 className='flex items-center text-white gap-1'><span><FaRegUser size={25} /></span>By {details.instructor}</h1>
                     </div>
                     <div className='mt-4'>
-                        {
-                            user?(
+                      {
+                            user ? (
+                                parseInt(details.seats) === enrollCount ? (
                                 <button
-                                onClick={() => handleEnroll(details)}
-                                disabled={!user || isEnrolled}
-                                className={`rounded-md text-sm font-medium h-10 px-4 py-2 
+                                    disabled
+                                    className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600 cursor-not-allowed'
+                                >
+                                    No seats left
+                                </button>
+                                ) : (
+                                <button
+                                    onClick={() => handleEnroll(details)}
+                                    disabled={!user || isEnrolled}
+                                    className={`rounded-md text-sm font-medium h-10 px-4 py-2 
                                     ${!user || isEnrolled ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'bg-white text-purple-600'}`}
                                 >
-                                {isEnrolled ? 'Already Enrolled' : 'Enroll Now'}
+                                    {isEnrolled ? 'Already Enrolled' : 'Enroll Now'}
                                 </button>
-
-                                    
+                                )
                             ) : (
                                 <>
-                                <button className='rounded-md text-sm font-medium disabled:opacity-50 h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed'>Login Required to Enroll</button>
-                                <p className='text-bas pt-2'>Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.</p>
+                                <button className='rounded-md text-sm font-medium disabled:opacity-50 h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed'>
+                                    Login Required to Enroll
+                                </button>
+                                <p className='text-bas pt-2'>
+                                    Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.
+                                </p>
                                 </>
                             )
                         }
