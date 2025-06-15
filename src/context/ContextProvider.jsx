@@ -62,7 +62,8 @@ const ContextProvider = ({children}) => {
         setLoading,
     }
 
-    console.log(user)
+    
+    
     return (
             <AuthContext.Provider value={userDetails}>
                 {children}

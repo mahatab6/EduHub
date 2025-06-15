@@ -83,7 +83,12 @@ const CourseDetails = () => {
              enrollStudent : seats,
         }
         
-        axios.post('http://localhost:3000/user-enroll-data', enrolledData)
+        axios.post('http://localhost:3000/user-enroll-data', enrolledData, {
+            
+            headers:{
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
         .then(data =>{
             if(data.data.message){
                 toast.error('Already enrolled in 3 courses', {

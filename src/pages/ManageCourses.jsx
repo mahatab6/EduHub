@@ -20,7 +20,11 @@ const ManageCourses = () => {
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/manage-courses/${user?.email}`)
+        axios.get(`http://localhost:3000/manage-courses/${user?.email}`,{
+            headers:{
+                authorization: `Bearer ${user.accessToken}`
+            }
+        })
         .then(data =>
         {
             setSingleCourse(data.data);

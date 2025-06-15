@@ -31,23 +31,23 @@ const Navbar = () => {
     const link =(
         <>
             <li>
-                <NavLink to="/" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Home</NavLink>
+                <NavLink to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Home</NavLink>
             </li>
             <li>
-                <NavLink to="/courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>courses</NavLink>
+                <NavLink to="/courses" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>courses</NavLink>
             </li>
             {
                 user ?(
                     <>
                     <li>
-                <NavLink to="/add-course" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
+                <NavLink to="/add-course" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/manage-courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Manage Courses</NavLink>
+                <NavLink to="/manage-courses" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Manage Courses</NavLink>
             </li>
             <li>
-                <NavLink to="/my-enrolled-courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>My Enrollments</NavLink>
+                <NavLink to="/my-enrolled-courses" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>My Enrollments</NavLink>
             </li>
             </>
                 ):(
