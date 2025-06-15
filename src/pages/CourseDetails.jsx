@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import Swal from 'sweetalert2';
 import Loading from './Loading';
 import { Helmet } from 'react-helmet';
+import { Bounce, toast } from 'react-toastify';
 
 
 
@@ -84,6 +85,20 @@ const CourseDetails = () => {
         
         axios.post('http://localhost:3000/user-enroll-data', enrolledData)
         .then(data =>{
+            if(data.data.message){
+                toast.error('Already enrolled in 3 courses', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    });
+            }
+
             if(data.data.insertedId){
                 Swal.fire({
                     title: "Enrollment successful",
@@ -124,7 +139,7 @@ const CourseDetails = () => {
             }
         })
         
-        console.log(id)
+        
     }
 
     
