@@ -10,6 +10,7 @@ import { AuthContext } from '../context/AuthContext';
 import { format } from 'date-fns';
 import Swal from 'sweetalert2';
 import Loading from './Loading';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -94,7 +95,9 @@ const CourseDetails = () => {
     
     return (
         <div>
-            
+            <Helmet>
+                <title>{details.title} | EduHub</title>
+            </Helmet>
             <div className='p-4 py-16 bg-gradient-to-r from-purple-600 to-blue-600 mb-4 flex-col flex md:items-center lg:flex-row justify-around'>
                 <div className='pb-4'>
                     <h1 className='text-5xl font-bold text-white mb-4'>{details.title}</h1>

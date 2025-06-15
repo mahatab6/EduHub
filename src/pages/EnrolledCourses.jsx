@@ -10,6 +10,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { TiDelete } from "react-icons/ti";
 import Swal from 'sweetalert2';
 import Loading from './Loading';
+import { Helmet } from 'react-helmet';
 
 
 const EnrolledCourses = () => {
@@ -57,6 +58,9 @@ const EnrolledCourses = () => {
 
     return (
         <div className='min-h-screen'>
+            <Helmet>
+                <title>Enrollments Courses | EduHub</title>
+            </Helmet>
             <div className='flex items-center justify-around py-12 px-2'>
                 <div>
                     <h1 className='text-3xl font-bold text-gray-900'>My Enrolled Courses</h1>

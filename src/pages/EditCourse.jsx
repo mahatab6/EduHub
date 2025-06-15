@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { FaEdit } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -58,6 +59,9 @@ const EditCourse = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
+            <Helmet>
+                <title>Edit Course | EduHub</title>
+            </Helmet>
                     <div className='w-full max-w-xl p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl space-y-4'>
                         <div className='text-center justify-items-center space-y-2 pb-4'>
                         <FaEdit size={35} />

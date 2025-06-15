@@ -8,6 +8,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { Bounce, toast } from 'react-toastify';
 import Loading from './Loading';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -57,6 +58,9 @@ const ManageCourses = () => {
 
     return (
         <div className='min-h-screen'>
+            <Helmet>
+                <title>Manage Courses | EduHub</title>
+            </Helmet>
             <div className='flex items-center justify-around py-12 px-2'>
                 <div>
                     <h1 className='text-3xl font-bold text-gray-900'>Manage Courses</h1>

@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { Bounce, toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -56,6 +57,9 @@ const AddCourse = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
+            <Helmet>
+                <title>Add Course | EduHub</title>
+            </Helmet>
             <div className='w-full max-w-xl p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl space-y-4'>
                 <div className='text-center justify-items-center space-y-2 pb-4'>
                 <IoAddOutline size={35} className=' text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-full' />

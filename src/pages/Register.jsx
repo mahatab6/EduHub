@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Bounce, toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -88,6 +89,9 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
+      <Helmet>
+        <title>Register | EduHub</title>
+      </Helmet>
       <div className="w-full max-w-md p-8 m-6 sm:p-10 bg-card text-card-foreground dark:bg-gray-50 dark:text-gray-800 rounded-lg shadow-2xl">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="EduHub Logo" className="w-24 h-24" />

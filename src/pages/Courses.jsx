@@ -4,7 +4,7 @@ import { FaUserFriends } from "react-icons/fa";
 import { Link } from 'react-router';
 import axios from 'axios';
 import Loading from './Loading';
-import { AuthContext } from '../context/AuthContext';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -30,6 +30,9 @@ const Courses = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>All Courses | EduHub</title>
+            </Helmet>
             <div className='text-center py-16 bg-gradient-to-r from-purple-600 to-blue-600 mb-4'>
                 <h1 className='text-5xl font-bold text-white mb-4'>All Courses</h1>
                 <p className='text-xl text-white mb-4'>Discover amazing courses and start your learning journey</p>
