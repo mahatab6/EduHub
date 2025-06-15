@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../assets/eduhub.png'
 import { AuthContext } from '../context/AuthContext';
 import { Bounce, toast } from 'react-toastify';
@@ -7,6 +7,8 @@ import { Bounce, toast } from 'react-toastify';
 const Navbar = () => {
 
     const {user, logOut} = useContext(AuthContext);
+      const navigate = useNavigate();
+
 
     const handleLogout = () =>{
         logOut()
@@ -22,6 +24,7 @@ const Navbar = () => {
                 theme: "colored",
                 transition: Bounce,
                 });
+                navigate('/');
             })
     }
 
@@ -33,7 +36,10 @@ const Navbar = () => {
             <li>
                 <NavLink to="/courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>courses</NavLink>
             </li>
-            <li>
+            {
+                user ?(
+                    <>
+                    <li>
                 <NavLink to="/add-course" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Add Course
                 </NavLink>
             </li>
@@ -43,6 +49,11 @@ const Navbar = () => {
             <li>
                 <NavLink to="/my-enrolled-courses" className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>My Enrollments</NavLink>
             </li>
+            </>
+                ):(
+                    ""
+                )
+            }
         </>
     )
     return (

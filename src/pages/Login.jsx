@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import logo from '../assets/eduhub.png';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
 
   const {signIn, signInGoogle, signInGithub} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const Login = () => {
                 theme: "colored",
                 transition: Bounce,
                 });
+                navigate(location?.state || '/');
     })
     .catch(() => {
     toast.error('Email & Password are wrong', {
@@ -58,6 +61,7 @@ const Login = () => {
                 theme: "colored",
                 transition: Bounce,
                 });
+                navigate(location?.state || '/');
     })
   }
   const handlegithhub = () =>{
@@ -74,6 +78,7 @@ const Login = () => {
                 theme: "colored",
                 transition: Bounce,
                 });
+                navigate(location?.state || '/');
     })
   }
 

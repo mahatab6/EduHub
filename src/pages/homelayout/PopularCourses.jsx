@@ -10,8 +10,7 @@ const PopularCourses = () => {
         .then(data =>
             setData(data.data)
         )
-    },[])
-    console.log(popularData)
+    },[]);
     return (
         <div className='bg-base-300'>
             <div className='text-center mb-12 pt-8'>

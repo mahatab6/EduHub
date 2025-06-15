@@ -9,6 +9,8 @@ import ManageCourses from "../pages/ManageCourses";
 import EnrolledCourses from "../pages/EnrolledCourses";
 import CourseDetails from "../pages/CourseDetails";
 import EditCourse from "../pages/EditCourse";
+import PrivateRouter from "./PrivateRouter";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -33,24 +35,28 @@ export const router = createBrowserRouter([
         },
         {
           path: 'add-course',
-          Component: AddCourse
+          element: <PrivateRouter><AddCourse/></PrivateRouter>,
         },
         {
           path: 'manage-courses',
-          Component: ManageCourses
+          element: <PrivateRouter><ManageCourses/></PrivateRouter>,
         },
         {
           path: 'my-enrolled-courses',
-          Component: EnrolledCourses
+          element: <PrivateRouter><EnrolledCourses/></PrivateRouter>,
         },
         {
           path: 'course-details/:id',
-          Component: CourseDetails
+          element:<CourseDetails/>,
         },
         {
           path: 'edit-course/:id',
-          Component: EditCourse
+          element: <PrivateRouter><EditCourse/></PrivateRouter>,
         },
+        {
+          path: '*',
+          element: <NotFound/>,
+        }
     ]
   },
 ]);

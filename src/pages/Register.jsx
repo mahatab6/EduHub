@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import logo from '../assets/eduhub.png';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Bounce, toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
@@ -8,8 +8,10 @@ import { AuthContext } from '../context/AuthContext';
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const {signUp, profile} = useContext(AuthContext)
+  const {signUp, profile} = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -64,6 +66,7 @@ const Register = () => {
         theme: "colored",
         transition: Bounce,
         });
+        navigate('/');
     })
     .catch(() => {
       toast.error('sign up failed', {
