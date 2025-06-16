@@ -20,7 +20,7 @@ const ManageCourses = () => {
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/manage-courses/${user?.email}`,{
+        axios.get(`https://course-server-tan.vercel.app/manage-courses/${user?.email}`,{
             headers:{
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -38,7 +38,7 @@ const ManageCourses = () => {
     };
 
     const handleDelete = (id) =>{
-        axios.delete(`http://localhost:3000/courses/${id}`)
+        axios.delete(`https://course-server-tan.vercel.app/courses/${id}`)
         .then(data =>{
             if(data.data.deletedCount == 1){
                 toast('Delete done', {

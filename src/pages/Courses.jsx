@@ -14,7 +14,7 @@ const Courses = () => {
 
     
     useEffect(()=>{
-        axios.get('http://localhost:3000/all-courses')
+        axios.get('https://course-server-tan.vercel.app/all-courses')
         .then(data => {
             setCourseData(data.data);
             setLoading(false);
