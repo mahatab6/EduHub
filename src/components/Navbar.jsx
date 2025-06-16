@@ -68,6 +68,11 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {link}
+
+                        <NavLink to="/login" className="btn">Login</NavLink>
+                        <NavLink to="/register" className="btn">Sign Up</NavLink>
+                            
+                        
                     </ul>
                     </div>
                     <div className='flex items-center gap-1'>
@@ -99,10 +104,12 @@ const Navbar = () => {
                         </>) : 
 
                         (
-                            <>
-                            <NavLink to="/login" className="btn">Login</NavLink>
-                            <NavLink to="/register" className="btn">Sign Up</NavLink>
-                            </>
+
+                            <div className='hidden lg:inline-block space-x-3'>
+                                <NavLink to="/login" className="btn ">Login</NavLink>
+                                <NavLink to="/register" className="btn ">Sign Up</NavLink>
+                            </div>
+                            
                         )
                         
                     }

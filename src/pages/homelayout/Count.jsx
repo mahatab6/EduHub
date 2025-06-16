@@ -1,14 +1,10 @@
 import React  from 'react';
 import CountUp from 'react-countup';
-import { LuUsers } from "react-icons/lu";
-import { FaBookOpen } from "react-icons/fa6";
-import { LiaCertificateSolid } from "react-icons/lia";
-import { FaStarHalfAlt } from "react-icons/fa";
 import Lottie from "lottie-react";
-import Students  from '../../assets/Animation - 1750033552111.json'
-import Courses from '../../assets/Animation - 1750034171266.json'
-import Certificates from '../../assets/Animation - 1750034566935.json'
-import Rating from '../../assets/Animation - 1750034830618.json'
+import Students  from '../../assets/Animation/Animation - 1750033552111.json'
+import Courses from '../../assets/Animation/Animation - 1750034171266.json'
+import Certificates from '../../assets/Animation/Animation - 1750034566935.json'
+import Rating from '../../assets/Animation/Animation - 1750034830618.json'
 
 
 

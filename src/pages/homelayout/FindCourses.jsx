@@ -1,8 +1,10 @@
 import React from 'react';
+import Lottie from "lottie-react";
 import coding from '../../assets/coding.png'
 import graphic from '../../assets/graphic-design.png'
 import essential from '../../assets/growth.png'
 import communication from '../../assets/development.png'
+
 
 const FindCourses = () => {
     return (
@@ -14,7 +16,7 @@ const FindCourses = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='p-4 rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
                     <img className='w-20 mx-auto' src={coding} alt="" />
-                    <h1 className='font-semibold tracking-tight text-xl mb-2 text-gray-800'>Development</h1>
+                    <h1 className='font-semibold tracking-tight  text-xl mb-2 text-gray-800'>Development</h1>
                     <p className='text-sm text-gray-600'>Master programming languages and build amazing applications.</p>
                 </div>
                 <div className='p-4 rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
