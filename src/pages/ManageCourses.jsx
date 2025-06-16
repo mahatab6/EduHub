@@ -58,7 +58,6 @@ const ManageCourses = () => {
         }
         )
     }
-    console.log(singleCourse)
 
     return (
         <div className='min-h-screen'>

@@ -43,7 +43,13 @@ const CourseDetails = () => {
                     courseId: details._id,
                     email: user.email
                 }
-            })
+            },
+            {
+              headers:{
+                authorization: `Bearer ${user.accessToken}`
+            }  
+            }
+        )
             .then(data => {
                 setIsEnrolled(data.data.enrolled);
             })

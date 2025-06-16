@@ -83,8 +83,6 @@ const Register = () => {
       });
     });
 
-    
-    console.log(name, photoURL, email, password, conPassword)
   }
 
   return (
