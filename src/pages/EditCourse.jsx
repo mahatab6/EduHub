@@ -149,7 +149,7 @@ const EditCourse = () => {
                                 </div>
                             </div>
                             <div className='flex justify-around gap-1'>
-                                <button className='btn w-2/3 text-white bg-purple-600 rounded-xl'>Add Course</button>
+                                <button className='btn w-2/3 text-white bg-purple-600 rounded-xl'>Update Course</button>
                                 <button onClick={handleCancel} className='btn w-1/3 rounded-xl'>Cancel</button>
                             </div>
                         </form>

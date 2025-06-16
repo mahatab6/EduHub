@@ -38,25 +38,21 @@ const CourseDetails = () => {
 
    useEffect(() => {
         if (details._id && user?.email) {
-            axios.get('https://course-server-tan.vercel.app/enroll-check', {
+            axios.get('https://course-server-tan.vercel.app/enroll-check', 
+            {
                 params: {
                     courseId: details._id,
                     email: user.email
                 }
-            },
-            {
-              headers:{
-                authorization: `Bearer ${user.accessToken}`
-            }  
             }
         )
-            .then(data => {
-                setIsEnrolled(data.data.enrolled);
-            })
+        .then(data => {
+            setIsEnrolled(data.data.enrolled);
+        })
             
         }
 
-    }, [details._id, user?.email]);
+    },[details._id, user])
 
     useEffect(() => {
         axios.get(`https://course-server-tan.vercel.app/enroll-count/${details._id}`)
