@@ -170,34 +170,34 @@ const CourseDetails = () => {
 
                         user ? (
                             parseInt(details.seats) === enrollCount ? (
-                            <button
+                            <Link
                                 disabled
-                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600 cursor-not-allowed'
+                                className='rounded-md hover:cursor-pointer text-sm btn font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600 cursor-not-allowed'
                             >
                                 No seats left
-                            </button>
+                            </Link>
                             ) : (
                             isEnrolled ? (
-                                <button
+                                <Link
                                 onClick={() => handleremove(details._id)}
-                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600'
+                                className='rounded-md hover:cursor-pointer text-sm btn font-medium h-10 px-4 py-2 bg-gray-300 text-gray-600'
                                 >
                                 Already Enrolled
-                                </button>
+                                </Link>
                             ) : (
-                                <button
+                                <Link
                                 onClick={() => handleEnroll(details)}
-                                className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-white text-purple-600'
+                                className='rounded-md hover:cursor-pointer text-sm btn font-medium h-10 px-4 py-2 bg-white text-purple-600'
                                 >
                                 Enroll Now
-                                </button>
+                                </Link>
                             )
                             )
                         ) : (
                             <>
-                            <button className='rounded-md text-sm font-medium h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed' disabled>
+                            <Link className='rounded-md hover:cursor-pointer text-sm btn font-medium h-10 px-4 py-2 bg-gray-400 text-gray-600 cursor-not-allowed' disabled>
                                 Login Required to Enroll
-                            </button>
+                            </Link>
                             <p className='text-base pt-2'>
                                 Please <Link to='/login' className='underline'>log in</Link> to enroll in this course.
                             </p>
