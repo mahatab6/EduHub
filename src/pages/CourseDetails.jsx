@@ -208,19 +208,19 @@ const CourseDetails = () => {
 
                     </div>
                 </div>
-                <img className='max-w-3xl rounded-2xl' src={details.photo} alt="" />
+                <img className='w-md xl:w-3xl rounded-2xl' src={details.photo} alt="" />
                 
             </div>
 
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6'>
                 <div className='rounded-lg border bg-card text-card-foreground shadow-xl space-y-2 p-4'>
                     <h1 className='text-2xl font-semibold leading-none tracking-tight'>Course Overview</h1>
-                    <p className='text-gray-700 leading-relaxed'>{details.description}</p>
+                    <p className='text-gray-700 leading-relaxed dark:text-white'>{details.description}</p>
                 </div>
 
                 <div className='rounded-lg border bg-card text-card-foreground shadow-xl space-y-8 p-4'>
                     <h1 className='text-2xl font-semibold leading-none text-center'>Course Information</h1>
-                    <div className='flex justify-around'>
+                    <div className='flex justify-between'>
                         <div>
                             <p className='text-xl font-medium'>Duration</p>
                             <p>{details.duration}</p>
@@ -230,7 +230,7 @@ const CourseDetails = () => {
                             <p>{details.instructor}</p>
                         </div>
                     </div>
-                    <div className='flex justify-around'>
+                    <div className='flex justify-between'>
                         <div>
                             <p className='text-xl font-medium'>Students Enrolled</p>
                             <p>{enrollCount}</p>
