@@ -12,15 +12,15 @@ const LatestCourses = () => {
         )
     },[])
     return (
-        <div>
-            <div className='text-center mb-12 mt-8'>
-                <h1 className='text-4xl font-bold text-gray-900 mb-4'>Latest Courses</h1>
-                <p className='text-xl text-gray-600'>Discover our newest additions to the course catalog</p>
+        <div className='my-8'>
+            <div className='text-center mb-8 '>
+                <h1 className='text-4xl dark:text-white font-bold text-gray-900 mb-4'>Latest Courses</h1>
+                <p className='text-xl dark:text-white text-gray-600'>Discover our newest additions to the course catalog</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:max-w-7xl mx-auto px-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center w-10/12 mx-auto'>
                 {
                 latestData.map((course) => (
-                    <div key={course._id} className="card bg-base-100 shadow-md m-4 p-4">
+                    <div key={course._id} className="card hover:shadow-2xl  bg-base-100 shadow-md m-4 p-4">
                         <figure>
                             <img className='w-full h-48 object-cover rounded-t-lg' src={course.photo} alt={course.title} />
                         </figure>
