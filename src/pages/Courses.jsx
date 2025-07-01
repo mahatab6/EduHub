@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IoTimeOutline } from "react-icons/io5";
 import { FaUserFriends } from "react-icons/fa";
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import axios from 'axios';
 import Loading from './Loading';
 import { Helmet } from 'react-helmet';
@@ -11,16 +11,29 @@ import { Helmet } from 'react-helmet';
 const Courses = () => {
     const [ loading, setLoading ] = useState(true);
     const [courseData, setCourseData] = useState([]);
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const selectedCategory = queryParams.get("categoty")
+    console.table(selectedCategory)
 
     
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('http://localhost:3000/all-courses')
-        .then(data => {
-            setCourseData(data.data);
-            setLoading(false);
-        })
-        
-    },[])
+            .then((res) => {
+                const allCourses = res.data;
+
+                if (selectedCategory) {
+                    const filteredCourses = allCourses.filter(course =>
+                        course.title.toLowerCase().includes(selectedCategory.toLowerCase())
+                    );
+                    setCourseData(filteredCourses);
+                } else {
+                    setCourseData(allCourses);
+                }
+
+                setLoading(false);
+            });
+    }, [selectedCategory]);
 
     if(loading){
         return <Loading/>;
