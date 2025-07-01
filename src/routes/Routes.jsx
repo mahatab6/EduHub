@@ -11,6 +11,7 @@ import CourseDetails from "../pages/CourseDetails";
 import EditCourse from "../pages/EditCourse";
 import PrivateRouter from "./PrivateRouter";
 import NotFound from "../pages/NotFound";
+import Contact from "../pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
         {
           path: 'course-details/:id',
           element:<CourseDetails/>,
+        },
+        {
+          path: 'contact',
+          element:<Contact/>,
         },
         {
           path: 'edit-course/:id',
