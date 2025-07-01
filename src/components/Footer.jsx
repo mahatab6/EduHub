@@ -9,8 +9,8 @@ const Footer = () => {
   return (
     <div>
       <footer className="bg-gray-900 text-white py-10 px-4">
-        <div className="w-10/12 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-4">
+        <div className="w-10/12 mx-auto justify-items-stretch grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-4 justify-self-start">
             <div className="flex items-center gap-2">
               <img src={logo} alt="EduHub logo" className="w-12" />
               <h1 className="text-2xl font-bold">EduHub</h1>
@@ -27,7 +27,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 md:justify-self-center ">
             <h2 className="text-xl font-semibold">Quick Links</h2>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li><Link to="/about">Home</Link></li>
@@ -37,7 +37,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 md:justify-self-end">
             <h2 className="text-xl font-semibold">Support</h2>
            <ul className="space-y-2 text-gray-300 text-sm">
               <li><Link to="/about">Help Center</Link></li>
