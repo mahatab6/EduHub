@@ -66,8 +66,8 @@ const ManageCourses = () => {
             </Helmet>
             <div className='flex items-center justify-around py-12 px-2'>
                 <div>
-                    <h1 className='text-3xl font-bold text-gray-900'>Manage Courses</h1>
-                    <p className='text-gray-600 mt-2'>Manage your created courses</p>
+                    <h1 className='text-3xl font-bold dark:text-white text-gray-900'>Manage Courses</h1>
+                    <p className='text-gray-600 mt-2 dark:text-white'>Manage your created courses</p>
                 </div>
                 <Link to="/add-course" className='btn bg-purple-600 text-white rounded-xl'><IoAddOutline size={25}/> Add New Course</Link>
             </div>
@@ -77,8 +77,8 @@ const ManageCourses = () => {
                 singleCourse.length === 0 ? (
                     <div className='text-center py-16'>
                     <img className='w-28 text-gray-400 mx-auto mb-4' src={graduation} alt="" />
-                    <h1 className='text-2xl font-semibold text-gray-900 mb-4'>No courses created yet</h1>
-                    <p className='text-gray-600 mb-8'>Start sharing your knowledge by creating your first course.</p>
+                    <h1 className='text-2xl font-semibold text-gray-900 mb-4 dark:text-white'>No courses created yet</h1>
+                    <p className='text-gray-600 mb-8 dark:text-white'>Start sharing your knowledge by creating your first course.</p>
                     <Link to="/add-course" className='btn bg-purple-600 text-white rounded-xl'>
                         <IoAddOutline size={25}/> Create Your First Course
                     </Link>
@@ -89,14 +89,14 @@ const ManageCourses = () => {
                             <table className="table">
                                 <thead>
                                     <div className='pt-4 pl-4 space-y-2'>
-                                        <h1 className='text-3xl font-bold text-gray-900'>Your Courses</h1>
-                                        <p className='text-gray-600 mt-2'>You have created {singleCourse.length} courses</p>
+                                        <h1 className='text-3xl font-bold text-gray-900 dark:text-white'>Your Courses</h1>
+                                        <p className='text-gray-600 mt-2 dark:text-white'>You have created {singleCourse.length} courses</p>
                                     </div>
                                     <tr>
-                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black'>Title</th>
-                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black'>Description</th>
-                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black'>Created</th>
-                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black'>Actions</th>
+                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black dark:text-white'>Title</th>
+                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black dark:text-white'>Description</th>
+                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black dark:text-white'>Created</th>
+                                    <th className='text-left py-3 px-4 text-2xl font-bold text-black dark:text-white'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
