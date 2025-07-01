@@ -12,7 +12,7 @@ const PopularCourses = () => {
         )
     },[]);
     return (
-        <div className='bg-base-300 py-10'>
+        <div  className='bg-base-300 py-10 '>
             <div className='text-center mb-12'>
                 <h1 className='text-4xl font-bold text-gray-900 mb-4 dark:text-white'>Popular Courses</h1>
                 <p className='text-xl dark:text-white text-gray-600'>Most enrolled courses by our community</p>

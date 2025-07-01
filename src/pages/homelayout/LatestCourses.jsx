@@ -12,7 +12,7 @@ const LatestCourses = () => {
         )
     },[])
     return (
-        <div className='my-8'>
+        <div data-aos="fade-up" className='my-8'>
             <div className='text-center mb-8 '>
                 <h1 className='text-4xl dark:text-white font-bold text-gray-900 mb-4'>Latest Courses</h1>
                 <p className='text-xl dark:text-white text-gray-600'>Discover our newest additions to the course catalog</p>
