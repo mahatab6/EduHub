@@ -10,13 +10,13 @@ import eduhub from '../assets/eduhub.png'
 
 const Contact = () => {
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet>
             <title>Contact | GreenMind</title>
             </Helmet>
             <div className='flex items-center justify-center pt-10 gap-2'>
                 <img className='w-[30px]' src={eduhub} alt="" />
-                <h1 className='text-xl text-green-600'>Contact</h1>
+                <h1 className='text-xl text-white'>Contact</h1>
             </div>
 
             <h1 className='md:text-4xl text-2xl font-bold text-center py-5'>Get in Touch</h1>
@@ -27,21 +27,21 @@ const Contact = () => {
                         <div className="py-6 md:py-0 md:px-6">
                             <div className="space-y-4">
                                 <p className="flex items-center gap-2">
-                                    <FaLocationDot size={45} className=" text-green-700 " />
+                                    <FaLocationDot size={45} className=" text-white " />
                                    <div>
                                         <p className='text-3xl'>Address</p>
                                         <p className='xl'>Fake address, 9999 CityDhaka 102, 8000 sent behaibior utl <br /> 1216, road 45 house of street</p>
                                    </div>
                                 </p>
                                 <p className="flex items-center gap-2">
-                                    <IoCall size={45} className=" text-green-700 " />
+                                    <IoCall size={45} className=" text-white " />
                                    <div>
                                         <p className='text-3xl'>Lets Talk us</p>
                                         <p className='xl'>Fake address, 9999 City</p>
                                    </div>
                                 </p>
                                 <p className="flex items-center gap-2">
-                                    <IoMdMail  size={45} className=" text-green-700 " />
+                                    <IoMdMail  size={45} className=" text-white " />
                                    <div>
                                         <p className='text-3xl'>Mail</p>
                                         <p className='xl'>eduhub@company.com</p>
@@ -63,7 +63,7 @@ const Contact = () => {
                                 <span className="mb-1">Message</span>
                                 <textarea rows="3" placeholder='write your comment' className="block p-2 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 "></textarea>
                             </label>
-                            <button type="button" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-green-600 text-white">Submit</button>
+                            <button type="button" className="self-center w-80  py-2 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-purple-600 text-white">Submit</button>
                         </form>
                     </div>
                 </section>

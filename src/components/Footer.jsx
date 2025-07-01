@@ -30,20 +30,16 @@ const Footer = () => {
           <div className="space-y-4 md:justify-self-center ">
             <h2 className="text-xl font-semibold">Quick Links</h2>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link to="/about">Home</Link></li>
-              <li><Link to="/team">courses</Link></li>
-              <li><Link to="/news">About us</Link></li>
-              <li><Link to="/contact">Contact </Link></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/courses">courses</Link></li>
             </ul>
           </div>
 
           <div className="space-y-4 md:justify-self-end">
             <h2 className="text-xl font-semibold">Support</h2>
            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><Link to="/about">Help Center</Link></li>
-              <li><Link to="/team">FAQ</Link></li>
-              <li><Link to="/news">Privacy Policy</Link></li>
-              <li><Link to="/contact">Terms of Service </Link></li>
+              <li><Link to="/contact">Contact </Link></li>
+
             </ul>
           </div>
         </div>
