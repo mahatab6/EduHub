@@ -17,7 +17,7 @@ const PopularCourses = () => {
                 <h1 className='text-4xl font-bold text-gray-900 mb-4 dark:text-white'>Popular Courses</h1>
                 <p className='text-xl dark:text-white text-gray-600'>Most enrolled courses by our community</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center w-10/12 mx-auto'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center w-10/12 mx-auto'>
                 {
                 popularData.map((course) => (
                     <div key={course._id} className="card bg-base-100 shadow-md hover:shadow-2xl m-4 p-4">

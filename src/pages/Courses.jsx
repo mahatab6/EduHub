@@ -51,10 +51,10 @@ const Courses = () => {
                 <p className='text-xl text-white mb-4'>Discover amazing courses and start your learning journey</p>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center lg:max-w-7xl mx-auto px-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center py-10 w-10/12 mx-auto'>
                 {
                 courseData.map((course) => (
-                    <div key={course._id} className="card bg-base-100 shadow-md m-4 p-4">
+                    <div key={course._id} className="card hover:shadow-2xl bg-base-100 shadow-md m-4 p-4">
                         <figure>
                             <img className='w-full h-48 object-cover rounded-t-lg' src={course.photo} alt={course.title} />
                         </figure>
