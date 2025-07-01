@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 const FindCourses = () => {
     const navigate = useNavigate();
     const handleCategory = (category) =>{
-        navigate(`/courses?categoty=${category}`)
+        navigate(`/courses?category=${category}`)
     }
 
 
