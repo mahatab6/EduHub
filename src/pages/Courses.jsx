@@ -42,7 +42,7 @@ const Courses = () => {
    
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet>
                 <title>All Courses | EduHub</title>
             </Helmet>
