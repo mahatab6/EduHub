@@ -6,7 +6,7 @@ const LatestCourses = () => {
 
     const [latestData, setLatestData] = useState([]);
     useEffect(()=>{
-        axios.get('https://course-server-tan.vercel.app/latest-courses')
+        axios.get('http://localhost:3000/latest-courses')
         .then(data =>
             setLatestData(data.data)
         )
