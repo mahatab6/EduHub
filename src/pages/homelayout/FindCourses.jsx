@@ -16,7 +16,7 @@ const FindCourses = () => {
 
     return (
         <div className='py-16 bg-gradient-to-r from-purple-50 to-blue-50'>
-           <div className='text-center mb-12 mt-8'>
+           <div className='text-center mb-8'>
                 <h1 className='text-4xl font-bold text-gray-900 mb-4'>Explore by Category</h1>
                 <p className='text-xl text-gray-600'>Find courses tailored to your interests</p>
             </div>
