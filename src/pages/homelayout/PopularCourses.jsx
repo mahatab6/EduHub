@@ -6,7 +6,7 @@ const PopularCourses = () => {
 
     const [popularData, setData] = useState([]);
     useEffect(()=>{
-        axios.get('https://course-server-tan.vercel.app/highest-enrolled-courses')
+        axios.get('http://localhost:3000/highest-enrolled-courses')
         .then(data =>
             setData(data.data)
         )

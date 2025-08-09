@@ -27,7 +27,7 @@ const CourseDetails = () => {
 
 
     useEffect(()=>{
-        axios.get(`https://course-server-tan.vercel.app/course-details/${id}`)
+        axios.get(`http://localhost:3000/course-details/${id}`)
         .then(data =>
         {
             setDetails(data.data);
@@ -38,7 +38,7 @@ const CourseDetails = () => {
 
    useEffect(() => {
         if (details._id && user?.email) {
-            axios.get('https://course-server-tan.vercel.app/enroll-check', 
+            axios.get('http://localhost:3000/enroll-check', 
             {
                 params: {
                     courseId: details._id,
@@ -55,7 +55,7 @@ const CourseDetails = () => {
     },[details._id, user])
 
     useEffect(() => {
-        axios.get(`https://course-server-tan.vercel.app/enroll-count/${details._id}`)
+        axios.get(`http://localhost:3000/enroll-count/${details._id}`)
             .then(data => {
             setEnrollCount(data.data.count);
         });
@@ -85,7 +85,7 @@ const CourseDetails = () => {
              enrollStudent : seats,
         }
         
-        axios.post('https://course-server-tan.vercel.app/user-enroll-data', enrolledData, {
+        axios.post('http://localhost:3000/user-enroll-data', enrolledData, {
             
             headers:{
                 authorization: `Bearer ${user.accessToken}`
@@ -131,7 +131,7 @@ const CourseDetails = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) =>{
             if (result.isConfirmed){
-                 axios.delete(`https://course-server-tan.vercel.app/enroll-button-delete/${id}`)
+                 axios.delete(`http://localhost:3000/enroll-button-delete/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         Swal.fire({
@@ -215,7 +215,7 @@ const CourseDetails = () => {
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6'>
                 <div className='rounded-lg border bg-card text-card-foreground shadow-xl space-y-2 p-4'>
                     <h1 className='text-2xl font-semibold leading-none tracking-tight'>Course Overview</h1>
-                    <p className='text-gray-700 leading-relaxed dark:text-white'>{details.description}</p>
+                    <p className='leading-relaxed '>{details?.description}</p>
                 </div>
 
                 <div className='rounded-lg border bg-card text-card-foreground shadow-xl space-y-8 p-4'>
@@ -223,11 +223,11 @@ const CourseDetails = () => {
                     <div className='flex justify-between'>
                         <div>
                             <p className='text-xl font-medium'>Duration</p>
-                            <p>{details.duration}</p>
+                            <p>{details?.duration}</p>
                         </div>
                         <div>
                             <p className='text-xl font-medium'>Instructor</p>
-                            <p>{details.instructor}</p>
+                            <p>{details?.instructor}</p>
                         </div>
                     </div>
                     <div className='flex justify-between'>
@@ -237,7 +237,7 @@ const CourseDetails = () => {
                         </div>
                         <div>
                             <p className='text-xl font-medium'>Created</p>
-                            <p>{details.created}</p>
+                            <p>{details?.created}</p>
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,7 @@ const AddCourse = () => {
         const title = from.title.value;
         const description = from.description.value;
         const photo = from.photo.value;
+        const level = from.Level.value;
         const duration = from.duration.value;
         const seats = from.seats.value;
 
@@ -30,15 +31,17 @@ const AddCourse = () => {
             title,
             description,
             photo,
+            level,
             duration,
             instructor: user?.displayName,
+            instructorPhoto: user?.photoURL,
             email: user?.email,
             created: today,
             seats: seats
             
         };
 
-        axios.post('https://course-server-tan.vercel.app/add-new-course', courseData)
+        axios.post('http://localhost:3000/add-new-course', courseData)
         .then(() => {
             toast.success('course added successfully', {
             position: "bottom-right",
@@ -133,10 +136,10 @@ const AddCourse = () => {
                             <option value="" disabled>
                             Select your course level
                             </option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="expert">Expert</option>
-                            <option value="all-levels">All Levels</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                            <option value="All-Levels">All Levels</option>
                         </select>
                     </div>
 

@@ -20,7 +20,7 @@ const EnrolledCourses = () => {
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
-        axios.get(`https://course-server-tan.vercel.app/enroll-manage-courses/${user?.email}`,{
+        axios.get(`http://localhost:3000/enroll-manage-courses/${user?.email}`,{
             headers:{
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -53,7 +53,7 @@ const EnrolledCourses = () => {
                 text: "Enrollment removed",
                 icon: "success"
                 });
-                axios.delete(`https://course-server-tan.vercel.app/enroll-courses-delete/${id}`)
+                axios.delete(`http://localhost:3000/enroll-courses-delete/${id}`)
                 const newCourse = singleCourse.filter(course => course._id !== id);
                 setSingleCourse(newCourse);
             }
