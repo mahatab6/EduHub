@@ -16,7 +16,7 @@ const Courses = () => {
   const selectedCategory = queryParams.get("category"); 
 
   useEffect(() => {
-    axios.get('http://localhost:3000/all-courses')
+    axios.get('https://course-server-tan.vercel.app/all-courses')
       .then((res) => {
         const all = res.data;
         setAllCourses(all);

@@ -27,7 +27,7 @@ const CourseDetails = () => {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/course-details/${id}`)
+        axios.get(`https://course-server-tan.vercel.app/course-details/${id}`)
         .then(data =>
         {
             setDetails(data.data);
@@ -38,7 +38,7 @@ const CourseDetails = () => {
 
    useEffect(() => {
         if (details._id && user?.email) {
-            axios.get('http://localhost:3000/enroll-check', 
+            axios.get('https://course-server-tan.vercel.app/enroll-check', 
             {
                 params: {
                     courseId: details._id,
@@ -55,7 +55,7 @@ const CourseDetails = () => {
     },[details._id, user])
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/enroll-count/${details._id}`)
+        axios.get(`https://course-server-tan.vercel.app/enroll-count/${details._id}`)
             .then(data => {
             setEnrollCount(data.data.count);
         });
@@ -85,7 +85,7 @@ const CourseDetails = () => {
              enrollStudent : seats,
         }
         
-        axios.post('http://localhost:3000/user-enroll-data', enrolledData, {
+        axios.post('https://course-server-tan.vercel.app/user-enroll-data', enrolledData, {
             
             headers:{
                 authorization: `Bearer ${user.accessToken}`
@@ -131,7 +131,7 @@ const CourseDetails = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) =>{
             if (result.isConfirmed){
-                 axios.delete(`http://localhost:3000/enroll-button-delete/${id}`)
+                 axios.delete(`https://course-server-tan.vercel.app/enroll-button-delete/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         Swal.fire({

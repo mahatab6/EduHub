@@ -47,9 +47,9 @@ const Banner = () => {
 
   return (
     
-      <Slider {...settings}>
-        <div>
-          <div className='flex flex-col-reverse space-y-3 p-4 md:flex-row justify-around items-center space-x-2' style={{backgroundImage: `url(${bg})`,height:"700px", backgroundSize: 'cover', backgroundPosition: 'center'}} >
+      <Slider {...settings} >
+        <div >
+          <div className=' flex flex-col-reverse space-y-3 p-4 md:flex-row justify-around items-center space-x-2' style={{backgroundImage: `url(${bg})`,height:"700px", backgroundSize: 'cover', backgroundPosition: 'center'}} >
               <motion.div
               animate={{
                 x: ((isMobile === "xl") ? 10 : 0) || ((isMobile === "lg") ? 10: 0) || ((isMobile === "md")? 10:0),

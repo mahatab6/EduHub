@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../assets/eduhub.png'
 import { AuthContext } from '../context/AuthContext';
 import { Bounce, toast } from 'react-toastify';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
 
@@ -58,7 +59,7 @@ const Navbar = () => {
     )
     return (
         <div className='bg-base-100 shadow-sm'>
-            <div className="navbar  w-10/12 mx-auto">
+            <div className="navbar  w-11/12 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -86,6 +87,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-1">
+                    <ThemeToggle/>
                     {
                         user? (
                         <>
