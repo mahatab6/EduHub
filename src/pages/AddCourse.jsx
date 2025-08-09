@@ -120,6 +120,26 @@ const AddCourse = () => {
                             className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                         />
                     </div>
+                   <div>
+                        <label htmlFor="Level" className="block mb-1 text-sm font-medium">
+                            Course Levels
+                        </label>
+                        <select
+                            id="Level"
+                            name="Level"
+                            required
+                            className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                            defaultValue="">
+                            <option value="" disabled>
+                            Select your course level
+                            </option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="expert">Expert</option>
+                            <option value="all-levels">All Levels</option>
+                        </select>
+                    </div>
+
                     <div>
                         <label htmlFor="seats" className="block mb-1 text-sm font-medium">
                             Seats 
