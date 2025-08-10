@@ -7,6 +7,7 @@ import LatestCourses from './homelayout/LatestCourses';
 import FindCourses from './homelayout/FindCourses';
 import PopularCourses from './homelayout/PopularCourses';
 import { Helmet } from 'react-helmet';
+import CourseMarquee from './homelayout/CourseMarquee';
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
             <Count/>
             <LatestCourses/>
             <FindCourses/>
+            <CourseMarquee/>
             <PopularCourses/>
             <Choose/>
             <Learning/>
