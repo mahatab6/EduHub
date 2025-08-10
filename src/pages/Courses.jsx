@@ -74,27 +74,26 @@ const Courses = () => {
           <p className='text-gray-500 text-lg'>No courses found.</p>
         ) : (
           courseData.map((course) => (
-            <div key={course._id} className="card hover:shadow-2xl bg-base-100 shadow-md m-4 p-4">
+            <div key={course?._id} className="card hover:shadow-2xl hover:-translate-y-2 transition duration-300 bg-base-300 shadow-md m-4 p-4">
               <figure>
-                <img className='w-full h-48 object-cover rounded-t-lg' src={course.photo} alt={course.title} />
+                  <img className=' object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
+                  <p className='flex items-center text-white rounded-xl text-base p-1 font-bold bg-purple-500 absolute top-6 right-1 gap-1'><IoTimeOutline size={25} /> {course.duration}</p>
               </figure>
+                        
               <div className="card-body">
-                <h2 className="card-title text-2xl font-semibold">{course.title}</h2>
-                <p className='text-sm text-muted-foreground mb-4'>{course.description}</p>
-                <div className='flex justify-around pt-3'>
-                  <p className='flex items-center gap-1'><IoTimeOutline />{course.duration}</p>
-                  <p className='flex items-center gap-1'><FaUserFriends /> 0 enrolled</p>
+                <div>
+                  <p className="inline-block text-xl font-bold bg-purple-500 text-white px-2 rounded">{course?.level}</p>
                 </div>
-                <div className='flex justify-around'>
-                  <p>By {course.instructor}</p>
-                  <p>Created: {course.created}</p>
-                </div>
+                  <h2 className="card-title text-2xl font-semibold">{course?.title}</h2>
+                  <p className='text-sm text-muted-foreground mb-4'>{course?.description.slice(0,150)}...</p>
+                  <div className='flex items-center gap-2'>
+                    <img className=" rounded-full h-12" src={course?.instructorPhoto} alt=""  referrerPolicy=''/> 
+                    <p className='text-xl font-bold'>By {course?.instructor}</p>
+                  </div>
+                <p className='text-xl font-bold'>$79</p>
               </div>
-
-              <Link to={`/course-details/${course._id}`} className='btn bg-purple-600 text-white rounded-2xl'>
-                View Details
-              </Link>
-            </div>
+                <Link to={`/course-details/${course?._id}`} className='btn border-1 border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl'>Start Learning</Link>
+              </div>
           ))
         )}
       </div>

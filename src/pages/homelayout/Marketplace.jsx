@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 
 const Marketplace = () => {
     return (
-        <div className="w-11/12 mx-auto py-10">
+        <div className="w-11/12 mx-auto py-10 px-5">
             <div className="flex flex-col xl:flex-row gap-5">
                
                 <div data-aos="fade-right" className="flex-1">
