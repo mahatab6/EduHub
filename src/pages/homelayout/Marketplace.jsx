@@ -12,7 +12,7 @@ const Marketplace = () => {
         <div className="w-11/12 mx-auto py-10">
             <div className="flex flex-col xl:flex-row gap-5">
                
-                <div className="flex-1">
+                <div data-aos="fade-right" className="flex-1">
                     <p className="inline-block p-2 rounded-2xl text-white my-5 text-xl font-bold bg-purple-600">
                         MARKETPLACE
                     </p>
@@ -33,7 +33,7 @@ const Marketplace = () => {
                 </div>
 
               
-                <div className="flex-1 flex flex-col gap-5 ">
+                <div data-aos="fade-left" className="flex-1 flex flex-col gap-5 ">
                   
                     <div className="flex justify-between gap-5">
                         <img className="rounded-full h-30 md:h-50 w-3/8 object-cover" src={work} alt="" />

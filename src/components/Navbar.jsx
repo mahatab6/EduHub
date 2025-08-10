@@ -37,6 +37,9 @@ const Navbar = () => {
             <li>
                 <NavLink to="/courses" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>courses</NavLink>
             </li>
+            <li>
+                <NavLink to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={({isActive})=> isActive? "text-sm font-medium transition-colors hover:text-purple-600 text-purple-600" : ""}>Contact Us</NavLink>
+            </li>
             {
                 user ?(
                     <>
