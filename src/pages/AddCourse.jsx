@@ -26,6 +26,7 @@ const AddCourse = () => {
         const level = from.Level.value;
         const duration = from.duration.value;
         const seats = from.seats.value;
+        const price = from.price.value;
 
         const courseData = {
             title,
@@ -33,6 +34,7 @@ const AddCourse = () => {
             photo,
             level,
             duration,
+            price: Number(price),
             instructor: user?.displayName,
             instructorPhoto: user?.photoURL,
             email: user?.email,
@@ -143,6 +145,19 @@ const AddCourse = () => {
                         </select>
                     </div>
 
+                    <div>
+                        <label htmlFor="price" className="block mb-1 text-sm font-medium">
+                            Course Price 
+                        </label>
+                        <input
+                            type="number"
+                            id="price"
+                            name="price "
+                            required
+                            placeholder="Please add your course price $"
+                            className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                        />
+                    </div>
                     <div>
                         <label htmlFor="seats" className="block mb-1 text-sm font-medium">
                             Seats 

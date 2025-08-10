@@ -14,9 +14,12 @@ const Courses = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get("category"); 
+  const [sortOrder, setSortOrder] = useState("");
+
+  console.log(sortOrder)
 
   useEffect(() => {
-    axios.get('http://localhost:3000/all-courses')
+    axios.get(`http://localhost:3000/all-courses?sortBy=price&order=${sortOrder}`)
       .then((res) => {
         const all = res.data;
         setAllCourses(all);
@@ -32,7 +35,7 @@ const Courses = () => {
 
         setLoading(false);
       });
-  }, [selectedCategory]);
+  }, [selectedCategory, sortOrder]);
 
   const handleSearch = (e) => {
     const text = e.target.value;
@@ -67,6 +70,17 @@ const Courses = () => {
           placeholder="Search courses..."
           className="w-80 p-3 border border-gray-300 rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
+
+        <div>
+          <select
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="border p-2 rounded border-white"
+            value={sortOrder}>
+            <option value="" disabled>Select your Price Range</option>
+            <option value="asc">Low → High</option>
+            <option value="desc">High → Low</option>
+          </select>
+        </div>
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center py-10 w-10/12 mx-auto'>
@@ -84,13 +98,13 @@ const Courses = () => {
                 <div>
                   <p className="inline-block text-xl font-bold bg-purple-500 text-white px-2 rounded">{course?.level}</p>
                 </div>
-                  <h2 className="card-title text-2xl font-semibold">{course?.title}</h2>
-                  <p className='text-sm text-muted-foreground mb-4'>{course?.description.slice(0,150)}...</p>
-                  <div className='flex items-center gap-2'>
-                    <img className=" rounded-full h-12" src={course?.instructorPhoto} alt=""  referrerPolicy=''/> 
-                    <p className='text-xl font-bold'>By {course?.instructor}</p>
-                  </div>
-                <p className='text-xl font-bold'>$79</p>
+                <h2 className="card-title text-2xl font-semibold">{course?.title}</h2>
+                <p className='text-sm text-muted-foreground mb-4'>{course?.description.slice(0,150)}...</p>
+                <div className='flex items-center gap-2'>
+                  <img className=" rounded-full h-12" src={course?.instructorPhoto} alt=""  referrerPolicy=''/> 
+                  <p className='text-xl font-bold'>By {course?.instructor}</p>
+                </div>
+                <p className='text-xl font-bold'>${course?.price}</p>
               </div>
                 <Link to={`/course-details/${course?._id}`} className='btn border-1 border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl'>Start Learning</Link>
               </div>

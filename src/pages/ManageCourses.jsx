@@ -22,7 +22,7 @@ const ManageCourses = () => {
     useEffect(()=>{
         axios.get(`http://localhost:3000/manage-courses/${user?.email}`,{
             headers:{
-                authorization: `Bearer ${user.accessToken}`
+                authorization: `Bearer ${user?.accessToken}`
             }
         })
         .then(data =>

@@ -28,12 +28,18 @@ const EditCourse = () => {
         const photo = from.photo.value;
         const duration = from.duration.value;
         const seats = from.seats.value;
+        const price = from.price.value;
+        const level = from.Level.value;
+
+
 
         const updateInfo = {
             title,
             description,
             photo,
             duration,
+            level,
+            price: Number(price),
             seats,
             instructor: oldInfo.instructor,
             email: oldInfo.email,
@@ -80,7 +86,7 @@ const EditCourse = () => {
                                     type="text"
                                     id="text"
                                     name="title"
-                                    defaultValue={oldInfo.title}
+                                    defaultValue={oldInfo?.title}
                                     required
                                     placeholder="Enter course title"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
@@ -93,7 +99,7 @@ const EditCourse = () => {
                                     </label>
                                     <textarea 
                                     name="description"
-                                    defaultValue={oldInfo.description}
+                                    defaultValue={oldInfo?.description}
                                     required
                                     className="w-full px-3 py-8 text-base border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" placeholder="Describe what students will learn in this course"></textarea>
                                 </fieldset>
@@ -107,7 +113,7 @@ const EditCourse = () => {
                                     id="photo"
                                     name="photo"
                                     required
-                                    defaultValue={oldInfo.photo}
+                                    defaultValue={oldInfo?.photo}
                                     placeholder="Enter your photo url"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                                 />
@@ -122,7 +128,40 @@ const EditCourse = () => {
                                     name="duration"
                                     required
                                     placeholder="e.g., 4 weeks, 20 hours, 3 months"
-                                    defaultValue={oldInfo.duration}
+                                    defaultValue={oldInfo?.duration}
+                                    className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="Level" className="block mb-1 text-sm font-medium">
+                                    Course Levels
+                                </label>
+                                <select
+                                    id="Level"
+                                    name="Level"
+                                    required
+                                    className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
+                                    defaultValue={oldInfo?.level}>
+                                    <option value="" disabled>
+                                    Select your course level
+                                    </option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Expert">Expert</option>
+                                    <option value="All-Levels">All Levels</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label htmlFor="price" className="block mb-1 text-sm font-medium">
+                                    Course Price 
+                                </label>
+                                <input
+                                    type="number"
+                                    id="price"
+                                    name="price "
+                                    required
+                                    defaultValue={oldInfo?.price}
+                                    placeholder="Please add your course price $"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                                 />
                             </div>
@@ -135,19 +174,12 @@ const EditCourse = () => {
                                     id="seats"
                                     name="seats "
                                     required
-                                    defaultValue={oldInfo.seats}
+                                    defaultValue={oldInfo?.seats}
                                     placeholder="How many students you want to enroll in the course?"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800"
                                 />
                             </div>
-                            <div className='bg-blue-50 p-4 rounded-lg'>
-                                <h1 className='font-semibold text-blue-900 mb-2'>Course Information</h1>
-                                <div className='text-sm text-blue-800 space-y-1'>
-                                    <p>Instructor: {oldInfo.instructor}</p>
-                                    <p>Email: {oldInfo.email}</p>
-                                    <p>Created: {oldInfo.created}</p>
-                                </div>
-                            </div>
+                            
                             <div className='flex justify-around gap-1'>
                                 <button className='btn w-2/3 text-white bg-purple-600 rounded-xl'>Update Course</button>
                                 <button onClick={handleCancel} className='btn w-1/3 rounded-xl'>Cancel</button>

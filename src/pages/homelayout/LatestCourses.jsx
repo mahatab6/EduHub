@@ -30,7 +30,7 @@ const LatestCourses = ({ latestData }) => {
                                 <img className=" rounded-full h-12" src={course?.instructorPhoto} alt=""  referrerPolicy=''/> 
                                 <p className='text-xl font-bold'>By {course?.instructor}</p>
                             </div>
-                            <p className='text-xl font-bold'>$79</p>
+                            <p className='text-xl font-bold'>${course?.price}</p>
                         </div>
                         <Link to={`/course-details/${course?._id}`} className='btn border-1 border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl'>Start Learning</Link>
                     </div>
