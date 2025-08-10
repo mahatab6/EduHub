@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import CourseMarquee from './homelayout/CourseMarquee';
 import Loading from './Loading';
 import axios from 'axios';
+import Marketplace from './homelayout/Marketplace';
 
 
 
@@ -41,6 +42,7 @@ const Home = () => {
             <LatestCourses latestData = {latestData}/>
             <FindCourses/>
             <CourseMarquee/>
+            <Marketplace/>
             <PopularCourses />
             <Choose/>
             <Learning/>
