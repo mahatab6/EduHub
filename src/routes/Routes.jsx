@@ -12,6 +12,7 @@ import EditCourse from "../pages/EditCourse";
 import PrivateRouter from "./PrivateRouter";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
+import Loading from "../pages/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
         {
           path: '*',
           element: <NotFound/>,
+        },
+        {
+          path:"loading",
+          element: <Loading/>
         }
     ]
   },

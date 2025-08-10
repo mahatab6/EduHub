@@ -1,18 +1,10 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { IoTimeOutline } from 'react-icons/io5';
-import { Link, Links } from 'react-router';
+import { Link } from 'react-router';
 
-const LatestCourses = () => {
+const LatestCourses = ({ latestData }) => {
 
-    const [latestData, setLatestData] = useState([]);
-    useEffect(()=>{
-        axios.get('http://localhost:3000/latest-courses')
-        .then(data =>
-            setLatestData(data.data)
-        )
-    },[])
-    console.log(latestData)
+    
+    
     return (
         <div data-aos="fade-up" className='my-8 '>
             <div className='text-center mb-8 '>
@@ -21,8 +13,8 @@ const LatestCourses = () => {
             </div>
             <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center w-11/12 mx-auto'>
                 {
-                latestData.map((course) => (
-                    <div key={course._id} className="card hover:shadow-2xl hover:-translate-y-2 transition duration-300 bg-base-300 shadow-md m-4 p-4">
+                latestData?.map((course) => (
+                    <div key={course?._id} className="card hover:shadow-2xl hover:-translate-y-2 transition duration-300 bg-base-300 shadow-md m-4 p-4">
                         <figure>
                             <img className=' object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
                             <p className='flex items-center text-white rounded-xl text-base p-1 font-bold bg-purple-500 absolute top-6 right-1 gap-1'><IoTimeOutline size={25} /> {course.duration}</p>
@@ -40,7 +32,7 @@ const LatestCourses = () => {
                             </div>
                             <p className='text-xl font-bold'>$79</p>
                         </div>
-                        <Link to={`/course-details/${course._id}`} className='btn border-1 border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl'>Start Learning</Link>
+                        <Link to={`/course-details/${course?._id}`} className='btn border-1 border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl'>Start Learning</Link>
                     </div>
                 ))
             }

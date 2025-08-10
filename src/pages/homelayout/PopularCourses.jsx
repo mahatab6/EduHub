@@ -10,6 +10,7 @@ const PopularCourses = () => {
         .then(data =>
             setData(data.data)
         )
+        
     },[]);
     return (
         <div  className='bg-base-300 py-10 '>
