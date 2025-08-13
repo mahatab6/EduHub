@@ -43,7 +43,7 @@ const AddCourse = () => {
             
         };
 
-        axios.post('http://localhost:3000/add-new-course', courseData)
+        axios.post('https://eduhub-coral.vercel.app/add-new-course', courseData)
         .then(() => {
             toast.success('course added successfully', {
             position: "bottom-right",

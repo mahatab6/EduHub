@@ -79,10 +79,10 @@ const Navbar = () => {
                         
                     </ul>
                     </div>
-                    <div className='flex items-center gap-1'>
+                    <Link to='/' className='flex items-center gap-1'>
                         <img className='w-[50px] rounded-2xl' src={logo} alt="" />
                         <a className="text-2xl font-bold text-gradient">EduHub</a>
-                    </div>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

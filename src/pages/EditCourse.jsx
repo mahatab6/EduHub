@@ -14,7 +14,7 @@ const EditCourse = () => {
     const navigated = useNavigate()
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/course-details/${id}`)
+        axios.get(`https://eduhub-coral.vercel.app/course-details/${id}`)
         .then(data =>
             setOldInfo(data.data)
         )
@@ -47,7 +47,7 @@ const EditCourse = () => {
             
         };
 
-        axios.put(`http://localhost:3000/update-course-data/${id}`,updateInfo)
+        axios.put(`https://eduhub-coral.vercel.app/update-course-data/${id}`,updateInfo)
         .then(data =>{
             if (data.data.modifiedCount === 1) {
                 Swal.fire({

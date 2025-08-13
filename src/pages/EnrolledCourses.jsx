@@ -20,7 +20,7 @@ const EnrolledCourses = () => {
     const [singleCourse, setSingleCourse] = useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/enroll-manage-courses/${user?.email}`,{
+        axios.get(`https://eduhub-coral.vercel.app/enroll-manage-courses/${user?.email}`,{
             headers:{
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -53,7 +53,7 @@ const EnrolledCourses = () => {
                 text: "Enrollment removed",
                 icon: "success"
                 });
-                axios.delete(`http://localhost:3000/enroll-courses-delete/${id}`)
+                axios.delete(`https://eduhub-coral.vercel.app/enroll-courses-delete/${id}`)
                 const newCourse = singleCourse.filter(course => course._id !== id);
                 setSingleCourse(newCourse);
             }
@@ -74,7 +74,7 @@ const EnrolledCourses = () => {
             </div>
 
             {
-                singleCourse.length === 0 ? (
+                singleCourse?.length === 0 ? (
                     <div className='text-center py-16'>
                     <img className='w-28 text-gray-400 mx-auto mb-4' src={online} alt="" />
                     <h1 className='text-2xl font-semibold text-gray-900 mb-4 dark:text-white'>No enrollments yet</h1>
@@ -90,7 +90,7 @@ const EnrolledCourses = () => {
                                 <thead>
                                     <div className='pt-4 pl-4 space-y-2'>
                                         <h1 className='text-3xl font-bold text-gray-900 dark:text-white'>Your Enrollments</h1>
-                                        <p className='text-gray-600 mt-2 dark:text-white'>You are enrolled in {singleCourse.length} course</p>
+                                        <p className='text-gray-600 mt-2 dark:text-white'>You are enrolled in {singleCourse?.length} course</p>
                                     </div>
                                     <tr>
                                         <th className='text-left py-3 px-4 text-2xl font-bold text-black dark:text-white'>Course Title</th>
@@ -102,31 +102,31 @@ const EnrolledCourses = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {singleCourse.map((course, index) => (
+                                    {singleCourse?.map((course, index) => (
                                     <tr key={index} className="hover:bg-base-300">
-                                        <td>{course.courseTitle}</td>
-                                        <td>{course.courseDescription}</td>
+                                        <td>{course?.courseTitle}</td>
+                                        <td>{course?.courseDescription}</td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><IoMdTime size={20} /></span>
-                                             {course.term}
+                                             {course?.term}
                                             </div>
                                         </td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><FaRegUser size={20}/></span>
-                                             {course.lecturer}
+                                             {course?.lecturer}
                                             </div>
                                         </td>
                                         <td >
                                             <div className="flex justify-center items-center h-full gap-1">
                                             <span><CiCalendarDate size={20}/></span>
-                                             {course.enroll}
+                                             {course?.enroll}
                                             </div>
                                         </td>
                                         <td>
                                         <div className="flex justify-center items-center h-full">
-                                            <button onClick={()=>handleEnroll(course._id)} className="btn rounded-xl bg-red-600 text-white"> <TiDelete size={25}/>Remove Enrollment</button>
+                                            <button onClick={()=>handleEnroll(course?._id)} className="btn rounded-xl bg-red-600 text-white"> <TiDelete size={25}/>Remove Enrollment</button>
                                         </div>
                                         </td>
                                     </tr>

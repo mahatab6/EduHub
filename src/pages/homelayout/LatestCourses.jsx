@@ -16,7 +16,7 @@ const LatestCourses = ({ latestData }) => {
                 latestData?.map((course) => (
                     <div key={course?._id} className="card hover:shadow-2xl hover:-translate-y-2 transition duration-300 bg-base-300 shadow-md m-4 p-4">
                         <figure>
-                            <img className=' object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
+                            <img className='h-60 object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
                             <p className='flex items-center text-white rounded-xl text-base p-1 font-bold bg-purple-500 absolute top-6 right-1 gap-1'><IoTimeOutline size={25} /> {course.duration}</p>
                         </figure>
                         

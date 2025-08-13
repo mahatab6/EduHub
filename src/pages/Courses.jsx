@@ -19,7 +19,7 @@ const Courses = () => {
   console.log(sortOrder)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/all-courses?sortBy=price&order=${sortOrder}`)
+    axios.get(`https://eduhub-coral.vercel.app/all-courses?sortBy=price&order=${sortOrder}`)
       .then((res) => {
         const all = res.data;
         setAllCourses(all);
@@ -83,14 +83,14 @@ const Courses = () => {
         </div>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center py-10 w-10/12 mx-auto'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 justify-items-center py-10 w-11/12 mx-auto'>
         {courseData.length === 0 ? (
           <p className='text-gray-500 text-lg'>No courses found.</p>
         ) : (
           courseData.map((course) => (
             <div key={course?._id} className="card hover:shadow-2xl hover:-translate-y-2 transition duration-300 bg-base-300 shadow-md m-4 p-4">
               <figure>
-                  <img className=' object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
+                  <img className='h-60 object-cover rounded-t-lg' src={course?.photo} alt={course?.title} />
                   <p className='flex items-center text-white rounded-xl text-base p-1 font-bold bg-purple-500 absolute top-6 right-1 gap-1'><IoTimeOutline size={25} /> {course.duration}</p>
               </figure>
                         

@@ -6,7 +6,7 @@ const PopularCourses = () => {
 
     const [popularData, setData] = useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:3000/highest-enrolled-courses')
+        axios.get('https://eduhub-coral.vercel.app/highest-enrolled-courses')
         .then(data =>
             setData(data.data)
         )
@@ -23,7 +23,7 @@ const PopularCourses = () => {
                 popularData.map((course) => (
                     <div key={course._id} className="card bg-base-100 shadow-md hover:shadow-2xl m-4 p-4 hover:-translate-y-1 transition duration-300">
                         <figure>
-                            <img className='w-full h-48 object-cover rounded-t-lg' src={course?.coursePhoto} alt={course?.title} />
+                            <img className='w-full h-60 object-cover rounded-t-lg' src={course?.coursePhoto} alt={course?.title} />
                         </figure>
                         <div className="card-body">
                             <h2 className="card-title text-2xl font-semibold">{course?.courseTitle}</h2>
