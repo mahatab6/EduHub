@@ -8,7 +8,7 @@ import { IoMdTime } from "react-icons/io";
 
 const Choose = () => {
     return (
-        <div className='py-12 px-2'>
+        <div className='py-20 px-2'>
             <div className='text-center '>
                 <h1 className='text-4xl  font-bold  mb-4'>Why Choose EduHub?</h1>
                 <p className='text-xl  mb-12'>Experience the difference with our unique approach to learning</p>

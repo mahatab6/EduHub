@@ -12,7 +12,7 @@ import Rating from '../../assets/Animation/Animation - 1750034830618.json'
 
 const count = () => {
     return (
-        <div className='py-16 bg-gray-50 grid lg:grid-cols-4 grid-cols-2 gap-4'>
+        <div className='py-20 bg-gray-50 grid lg:grid-cols-4 grid-cols-2 gap-4'>
             <div className='text-center justify-items-center space-y-2'>
                 <Lottie style={{width:'150px', }} animationData={Students}  loop={true} ></Lottie>
                 <CountUp className='text-3xl font-bold text-gray-900 mb-2' end={10000} /> <span className='text-3xl font-bold text-gray-900'>+</span>

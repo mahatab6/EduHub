@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div>
       <footer className="bg-gray-900 text-white py-10 px-4">
-        <div className="w-10/12 mx-auto justify-items-stretch grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="w-11/12 mx-auto justify-items-stretch grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4 justify-self-start">
             <div className="flex items-center gap-2">
               <img src={logo} alt="EduHub logo" className="w-12" />

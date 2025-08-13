@@ -6,7 +6,7 @@ const LatestCourses = ({ latestData }) => {
     
     
     return (
-        <div data-aos="fade-up" className='my-8 '>
+        <div data-aos="fade-up" className='py-20 '>
             <div className='text-center mb-8 '>
                 <h1 className='text-4xl font-bold  mb-4 '>Latest Courses</h1>
                 <p className='text-xl'>Discover our newest additions to the course catalog</p>
@@ -37,9 +37,7 @@ const LatestCourses = ({ latestData }) => {
                 ))
             }
             </div>
-            <div className='text-center my-4'>
-                <Link to='/courses' className='text-xl font-bold p-2 bg-black text-white hover:bg-purple-600 rounded-xl'>Enroll Now</Link>
-            </div>
+            
         </div>
     );
 };
