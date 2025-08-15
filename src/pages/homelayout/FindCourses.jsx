@@ -21,26 +21,30 @@ const FindCourses = () => {
                 <p className='text-xl text-black'>Find courses tailored to your interests</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto sm:px-6 '>
-                <div onClick={() => handleCategory("Development")} className=' p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
-                    <img className='w-40 mx-auto' src={coding} alt="" />
-                    <h1 className='font-bold tracking-tight  text-xl mb-2 text-gray-800'>Development</h1>
-                    <p className='text-sm text-gray-600'>Master programming languages and build amazing applications.</p>
-                </div>
-                <div onClick={()=> handleCategory("Design")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
-                    <img className='w-40 mx-auto' src={graphic} alt="" />
-                    <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Design</h1>
-                    <p className='text-sm text-gray-600'>Unleash your creativity with courses in UI/UX and graphic design.</p>
-                </div>
-                <div onClick={()=> handleCategory("Business")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
-                    <img className='w-40 mx-auto' src={essential} alt="" />
-                    <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Business</h1>
-                    <p className='text-sm text-gray-600'>Learn essential business skills from marketing to finance.</p>
-                </div>
-                <div onClick={()=> handleCategory("Personal-Development")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
-                    <img className='w-40 mx-auto' src={communication} alt="" />
-                    <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Personal Development</h1>
-                    <p className='text-sm text-gray-600'>Grow your skills in leadership, communication, and more.</p>
-                </div>
+              
+                    <div onClick={() => handleCategory("Development")} className=' p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
+                        <img className='w-40 mx-auto' src={coding} alt="" />
+                        <h1 className='font-bold tracking-tight  text-xl mb-2 text-gray-800'>Development</h1>
+                        <p className='text-sm text-gray-600'>Master programming languages and build amazing applications.</p>
+                    </div>
+                    <div onClick={()=> handleCategory("Design")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
+                        <img className='w-40 mx-auto' src={graphic} alt="" />
+                        <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Design</h1>
+                        <p className='text-sm text-gray-600'>Unleash your creativity with courses in UI/UX and graphic design.</p>
+                    </div>
+               
+               
+                    <div onClick={()=> handleCategory("Business")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
+                        <img className='w-40 mx-auto' src={essential} alt="" />
+                        <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Business</h1>
+                        <p className='text-sm text-gray-600'>Learn essential business skills from marketing to finance.</p>
+                    </div>
+                    <div onClick={()=> handleCategory("Personal-Development")} className='p-4 hover:cursor-pointer rounded-lg border bg-white text-card-foreground shadow-sm h-full text-center hover:shadow-xl transition-shadow card-gradient'>
+                        <img className='w-40 mx-auto' src={communication} alt="" />
+                        <h1 className='font-bold tracking-tight text-xl mb-2 text-gray-800'>Personal Development</h1>
+                        <p className='text-sm text-gray-600'>Grow your skills in leadership, communication, and more.</p>
+                    </div>
+              
             </div>
         </div>
     );

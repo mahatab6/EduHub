@@ -6,6 +6,7 @@ import glasses from '../../assets/glasses using laptop.jpg';
 import computer from '../../assets/Computer Wearing.jpg';
 import skill from '../../assets/skill job workforce.jpg';
 import { Link } from 'react-router';
+import { Slide } from 'react-awesome-reveal';
 
 const Marketplace = () => {
     return (
@@ -13,6 +14,7 @@ const Marketplace = () => {
             <div className="flex flex-col xl:flex-row gap-5">
                
                 <div className="flex-1">
+                    <Slide direction="left">
                     <p className="inline-block p-2 rounded-2xl text-white my-5 text-xl font-bold bg-purple-600">
                         MARKETPLACE
                     </p>
@@ -30,11 +32,12 @@ const Marketplace = () => {
                     <div className='py-5'>
                         <Link to='/courses' className='text-xl text-center font-bold p-3 bg-black text-white hover:bg-purple-600 rounded-xl'>Explore Now</Link>
                     </div>
-                </div>
+                    </Slide>
 
-              
+                </div>
+                
                 <div className="flex-1 flex flex-col gap-5 ">
-                  
+                  <Slide direction="right">
                     <div className="flex justify-between gap-5">
                         <img className="rounded-full h-30 md:h-50 w-3/8 object-cover" src={work} alt="" />
                         <img className="rounded-lg h-30 md:h-50 w-5/8 object-cover" src={webcam} alt="" />
@@ -49,7 +52,9 @@ const Marketplace = () => {
                         <img className="rounded-full h-30 md:h-50 w-3/8 object-cover" src={young} alt="" />
                         <img className="rounded-lg h-30 md:h-50 w-5/8 object-cover" src={computer} alt="" />
                     </div>
+                    </Slide>
                 </div>
+                
             </div>
         </div>
     );

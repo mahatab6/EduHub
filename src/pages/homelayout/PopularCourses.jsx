@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Slide } from 'react-awesome-reveal';
 import { Link } from 'react-router';
 
 const PopularCourses = () => {
@@ -13,7 +14,9 @@ const PopularCourses = () => {
         
     },[]);
     return (
+        
         <div  className='bg-base-300 py-20 '>
+            <Slide direction="up" >
             <div className='text-center mb-12'>
                 <h1 className='text-4xl font-bold mb-4 '>Popular Courses</h1>
                 <p className='text-xl '>Most enrolled courses by our community</p>
@@ -64,8 +67,9 @@ const PopularCourses = () => {
                     </div>
                 ))}
             </div>
-
+            </Slide>
         </div>
+       
     );
 };
 
