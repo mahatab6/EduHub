@@ -18,27 +18,53 @@ const PopularCourses = () => {
                 <h1 className='text-4xl font-bold mb-4 '>Popular Courses</h1>
                 <p className='text-xl '>Most enrolled courses by our community</p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center w-11/12 mx-auto'>
-                {
-                popularData.map((course) => (
-                    <div key={course._id} className="card bg-base-100 shadow-md hover:shadow-2xl m-4 p-4 hover:-translate-y-1 transition duration-300">
-                        <figure>
-                            <img className='w-full h-60 object-cover rounded-t-lg' src={course?.coursePhoto} alt={course?.title} />
-                        </figure>
-                        <div className="card-body">
-                            <h2 className="card-title text-2xl font-semibold">{course?.courseTitle}</h2>
-                            <p className='text-sm text-muted-foreground mb-4'>{course?.courseDescription?.slice(0,150)}...</p>
-                            <div className='flex justify-around pt-3'>
-                                <p className='flex items-center gap-1'>Enrolled: {course?.count}</p>
-                                <p className='flex items-center gap-1'>Duration: {course?.term}</p>
-                            </div>
-                        </div>
-                        
-                        <Link to={`/course-details/${course?._id}`} className='text-xl font-bold p-2 bg-black text-white hover:bg-purple-600 rounded-xl text-center'>Enroll Now</Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-11/12 mx-auto">
+                {popularData.map((course) => (
+                    <div
+                    key={course._id}
+                    className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden flex flex-col"
+                    >
+                    {/* Image */}
+                    <div className="relative">
+                        <img
+                        className="w-full h-56 object-cover"
+                        src={course?.coursePhoto}
+                        alt={course?.courseTitle}
+                        />
                     </div>
-                ))
-            }
+
+                    {/* Card Body */}
+                    <div className="p-5 flex flex-col gap-3 flex-grow">
+                        <h2 className="text-lg font-bold text-gray-800 leading-snug">
+                        {course?.courseTitle}
+                        </h2>
+
+                        <p className="text-sm text-gray-600">
+                        {course?.courseDescription?.slice(0, 120)}...
+                        </p>
+
+                        {/* Stats */}
+                        <div className="flex justify-between items-center text-sm text-gray-500 mt-auto border-t pt-3">
+                        <p className="flex items-center gap-1">
+                            <span className="font-semibold text-gray-800">{course?.count}</span> Enrolled
+                        </p>
+                        <p className="flex items-center gap-1">
+                            <span className="font-semibold text-gray-800">{course?.term}</span> Duration
+                        </p>
+                        </div>
+                    </div>
+
+                    {/* Button */}
+                    <Link
+                        to={`/course-details/${course?._id}`}
+                        className="m-5 mt-0 block text-center bg-purple-600 text-white font-semibold py-2 rounded-full hover:bg-purple-700 transition"
+                    >
+                        Enroll Now
+                    </Link>
+                    </div>
+                ))}
             </div>
+
         </div>
     );
 };
