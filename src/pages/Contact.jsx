@@ -39,7 +39,7 @@ const Contact = () => {
                                     <IoCall size={30} className="" />
                                    <div>
                                         <p className='text-3xl'>Lets Talk us</p>
-                                        <p className='xl'>+8801574896467</p>
+                                        <p className='xl'>+88015748964</p>
                                    </div>
                                 </p>
                                 <p className="flex  gap-2">
