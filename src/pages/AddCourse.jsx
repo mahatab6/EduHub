@@ -101,7 +101,7 @@ const AddCourse = () => {
                     </div>
                     <div>
                         <label htmlFor="photo" className="block mb-1 text-sm font-medium">
-                            Photo URL
+                            Photo's URL
                         </label>
                         <input
                             type="url"
